@@ -1,0 +1,27 @@
+.skills_badges_1 ul li img { width: 150px; }
+.skills_badges_1 ul li { padding: 0px 30px; }
+
+.skills_badges_1 .col:before,
+.skills_badges_1 .col:after
+{
+	content: '';
+	height: 100%;
+	width: 40px;
+	
+	position: absolute;
+	z-index: 2;
+	top: 0px;
+	bottom: 0px;
+} 
+
+.skills_badges_1 .col::before
+{
+	left: 0px;
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.skills_badges_1 .col::after
+{
+	right: 0px;
+	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)
+}

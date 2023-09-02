@@ -1,0 +1,165 @@
+[
+  {
+    "name": "Front End Web Development",
+    "subSkills": [
+      {
+        "name": "HTML5",
+        "badge": "/images/badges/html5.svg"
+      },
+      {
+        "name": "CSS3",
+        "badge": "/images/badges/css3.svg"
+      },
+      {
+        "name": "SCSS",
+        "badge": "/images/badges/sass.svg"
+      },
+      {
+        "name": "JavaScript",
+        "badge": "/images/badges/javascript.svg"
+      },
+      {
+        "name": "jQuery",
+        "badge": "/images/badges/jquery.svg"
+      },
+      {
+        "name": "Bootstrap",
+        "badge": "/images/badges/bootstrap.png"
+      },
+      {
+        "name": "Vue.js",
+        "badge": "/images/badges/vuejs.svg"
+      },
+      {
+        "name": "React.js",
+        "badge": "/images/badges/reactjs.svg"
+      }
+    ]
+  },
+  {
+    "name": "Back End Web Development",
+    "subSkills": [
+      {
+        "name": "PHP 7, 8",
+        "badge": "/images/badges/php.svg"
+      },
+      {
+        "name": "Apache",
+        "badge": "/images/badges/apache.svg"
+      },
+      {
+        "name": "Node.js",
+        "badge": "/images/badges/nodejs.svg"
+      },
+      {
+        "name": "Express.js",
+        "badge": "/images/badges/express.jpeg"
+      },
+      {
+        "name": "Next.js",
+        "badge": "/images/badges/nextjs.png"
+      }
+    ]
+  },
+  {
+    "name": "Data Store Technologies",
+    "subSkills": [
+      {
+        "name": "MySQL",
+        "badge": "/images/badges/mysql.svg"
+      },
+      {
+        "name": "MongoDB",
+        "badge": "/images/badges/mongodb.png"
+      },
+      {
+        "name": "Redis",
+        "badge": "/images/badges/redis.png"
+      },
+      {
+        "name": "Prisma",
+        "badge": "/images/badges/prisma.svg"
+      },
+      {
+        "name": "Mongoose",
+        "badge": "/images/badges/mongoose.png"
+      }
+    ]
+  },
+  {
+    "name": "Cloud Technologies",
+    "subSkills": [
+      {
+        "name": "AWS",
+        "badge": "/images/badges/aws.png",
+        "subSkills": [
+          {
+            "name": "Certified Developer Associate",
+            "badge": "/images/badges/aws-certified-developer-associate.png",
+            "link": "https://www.credly.com/badges/5e88e061-c944-4c64-bb6b-af11f104aa87/public_url"
+          },
+          {
+            "name": "Amazon S3",
+            "badge": "/images/badges/aws-s3.png"
+          },
+          {
+            "name": "Amazon EC2",
+            "badge": "/images/badges/aws-ec2.svg"
+          },
+          {
+            "name": "Amazon API Gateway",
+            "badge": "/images/badges/aws-api-gateway.svg"
+          },
+          {
+            "name": "AWS Lambda",
+            "badge": "/images/badges/aws-lambda.svg"
+          },
+          {
+            "name": "Amazon DynamoDB",
+            "badge": "/images/badges/aws-dynamodb.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Version Control",
+    "subSkills": [
+      {
+        "name": "Git",
+        "badge": "/images/badges/git.png"
+      },
+      {
+        "name": "GitHub",
+        "badge": "/images/badges/github.png"
+      },
+      {
+        "name": "Bitbucket",
+        "badge": "/images/badges/bitbucket.png"
+      }
+    ]
+  },
+  {
+    "name": "DevOps",
+    "subSkills": [
+      {
+        "name": "Docker",
+        "badge": "/images/badges/docker.webp"
+      }
+    ]
+  },
+  {
+    "name": "CI/CD",
+    "subSkills": [
+      {
+        "name": "Vercel",
+        "badge": "/images/badges/vercel.png"
+      },
+      {
+        "name": "Bitbucket Pipelines",
+        "badge": "/images/badges/bitbucket-pipelines.png"
+      }
+    ]
+  }
+  
+]

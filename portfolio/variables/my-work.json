@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Canopy",
+    "highlight": true,
+    "short_description": "",
+    "long_description": "",
+    "image": "/images/mywork/canopy/canopy1.png",
+    "image_alt": "Canopy x Ninthroot",
+    "link": "",
+
+    "gallery": [
+      {
+        "image": "",
+        "image_alt": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "title": "UVU Feud",
+    "highlight": true,
+    "short_description": "",
+    "long_description": "",
+    "image": "/images/mywork/uvu-feud/uvu-feud10.png",
+    "image_alt": "UVU Feud",
+    "link": "https://github.com/trevor-gibby/UVU-Feud",
+
+    "gallery": [
+
+    ]
+  },
+  {
+    "title": "Fantasy Basketball",
+    "highlight": true,
+    "short_description": "",
+    "long_description": "",
+    "image": "/images/mywork/fantasy-basketball/fantasy-basketball1.png",
+    "image_alt": "Fantasy Basketball",
+    "link": "https://github.com/trevor-gibby/Fantasy-Team-Management-System",
+
+    "gallery": [
+
+    ]
+  },
+  {
+    "title": "Redis Integration",
+    "highlight": true,
+    "short_description": "",
+    "long_description": "",
+    "image": "/images/mywork/redis-integration/redis-integration1.png",
+    "image_alt": "Redis Integration",
+
+    "gallery": [
+
+    ]
+  }
+
+]

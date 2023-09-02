@@ -1,0 +1,34 @@
+[
+  {
+    "title": "My Work",
+    "slug": "/my-work",
+    "img": "/images/my-work.png",
+    "alt": "My Work",
+    "showInMainNav": true,
+    "showInSubNav": true
+  },
+  {
+    "title": "Skills",
+    "slug": "/skills",
+    "img": "/images/skills.svg",
+    "alt": "Skills",
+    "showInMainNav": true,
+    "showInSubNav": true
+  },
+  {
+    "title": "About Me",
+    "slug": "/about",
+    "img": "/images/about.jpg",
+    "alt": "About Me",
+    "showInMainNav": true,
+    "showInSubNav": true
+  },
+  {
+    "title": "Contact Me",
+    "slug": "/contact",
+    "img": "/images/contact.jpg",
+    "alt": "Contact Me",
+    "showInMainNav": false,
+    "showInSubNav": false
+  }
+]
