@@ -1,15 +1,16 @@
 import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
 
 const days = 1;
+console.log(process.env.NODE_ENV)
 
 const iron_options = {
   cookieName: "trevorgibby.dev",
   password: process.env.SESSION_TOKEN,
   // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
-  cookieOptions: {
-    secure: process.env.NODE_ENV === "production",
-    maxAge: days * 24 * 60 * 60
-  },
+  // cookieOptions: {
+  //   secure: process.env.NODE_ENV === "production",
+  //   maxAge: days * 24 * 60 * 60
+  // },
 };
 
 export function withSessionRoute(handler) {
