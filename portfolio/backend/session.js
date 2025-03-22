@@ -1,7 +1,7 @@
 import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
 
 const days = 1;
-console.log(process.env.NODE_ENV)
+console.log(process.env.SESSION_TOKEN)
 
 const iron_options = {
   cookieName: "trevorgibby.dev",
