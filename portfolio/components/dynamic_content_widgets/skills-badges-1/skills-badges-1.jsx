@@ -1,4 +1,4 @@
-import styles from './skills-badges-1.module.css';
+import styles from './skills-badges-1.module.scss';
 import SkillsBadge from './skills-badge';
 import dynamic from 'next/dynamic';
 import { useEffect } from 'react';

@@ -1,5 +1,5 @@
 
-import styles from './subnav-card-1.module.css'
+import styles from './subnav-card-1.module.scss'
 
 export default function SubnavCard1({pages}) {
 

@@ -1,5 +1,5 @@
 
-import styles from './cta.module.css';
+import styles from './cta.module.scss';
 
 export default function CTA({color = "primary", textColor = "light", title, subtitle, button1, button2, logo = "/logos/tg-logo", logoColor = "wash"})
 {

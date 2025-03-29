@@ -1,4 +1,4 @@
-import styles from './contact-form.module.css';
+import styles from './contact-form.module.scss';
 
 import { Form, Button } from 'react-bootstrap';
 import React, { useState } from 'react';
@@ -55,11 +55,11 @@ export default function ContactForm({ messageSent }) {
   };
 
   return (
-    <>
+    <div className={styles.contact_form}>
       {successMessage ? (
         <p className={styles.success_message}>{successMessage}</p>
       ) : (
-        <>
+        <div>
           {errorMessage && <p className={styles.error_message}>{errorMessage}</p>}
           {isSubmitting && <div className={styles.submitting_spinner}></div>}
           <p>
@@ -108,8 +108,8 @@ export default function ContactForm({ messageSent }) {
               </Form.Group>
             </div>
           </Form>
-        </>
+        </div>
       )}
-    </>
+    </div>
   )
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import ContactForm from '@/components/widget_templates/contact-form/contact-form';
 
-import styles from './contact-modal.module.css';
+import styles from './contact-modal.module.scss';
 
 let showModal;
 let hideModal;

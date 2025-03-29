@@ -6,7 +6,7 @@ import siteVariables from '@/variables/site-variables.json'
 import '@/node_modules/bootstrap/dist/css/bootstrap.css'
 
 // Global styles
-import '@/styles/globals.css'
+import '@/styles/globals.scss'
 
 import { ThemeProvider } from 'next-themes'
 import { useEffect, useState } from 'react';

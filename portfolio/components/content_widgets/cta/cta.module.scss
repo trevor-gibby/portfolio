@@ -1,0 +1,47 @@
+.cta {
+  border-radius: var(--border-radius);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 40px 36px 24px;
+
+  .logo {
+    margin-bottom: 24px;
+    height: 60px;
+  }
+
+  .content {
+    width: 100%;
+
+    .title {
+      font-family: var(--font-secondary);
+      text-transform: unset;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+    }
+
+    a {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(max-width: 991px)
+  {
+    min-height: unset;
+
+    padding: 20px 16px 16px;
+
+    .content {
+      width: unset;
+    }
+  }
+}
+

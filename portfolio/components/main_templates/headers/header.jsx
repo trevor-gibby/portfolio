@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from './header.module.css';
+import styles from './header.module.scss';
 
 import { useState, useEffect, useRef } from 'react'
 
@@ -54,7 +54,7 @@ export default function Header({
               </Link>
             </div>
             <div className={styles.items}>
-              <nav role="navigation">
+              <nav className={styles.nav} role="navigation">
                 <ul className={styles.level_1}>
                   {pages.map((page, index) => {
                     return (

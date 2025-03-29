@@ -1,5 +1,5 @@
 
-import styles from './my-work-card-1.module.css'
+import styles from './my-work-card-1.module.scss'
 
 export default function MyWorkCard1({items}) {
 

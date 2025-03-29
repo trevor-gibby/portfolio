@@ -1,5 +1,5 @@
 
-import styles from './bg-img.module.css'
+import styles from './bg-img.module.scss'
 
 export default function BgImg({img, alt, add_classes, overlay, img_position, caption}) {
 

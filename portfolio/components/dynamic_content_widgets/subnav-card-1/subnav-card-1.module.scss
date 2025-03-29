@@ -1,0 +1,47 @@
+.subnav_card_1 {
+	.page_card {
+		border-radius: var(--border-radius);
+		display: block;
+
+		.img {
+			width: 100%;
+			aspect-ratio: 1.8;
+			object-fit: cover;
+			object-position: center;
+
+			border-radius: var(--border-radius) var(--border-radius) 0 0;
+		}
+
+		.details {
+			display: flex;
+			gap: 0.5rem;
+			padding: 0.8rem;
+			align-items: center;
+
+			@media(min-width: 992px) {
+				padding: 1rem;
+				font-size: 1.4375rem;
+			}
+
+			i {
+				font-size: 75%;
+				padding-bottom: 4px;
+			}
+		}
+		.details, .details * {
+			font-size: 1.25rem;
+			text-transform: uppercase;
+			font-weight: 700;
+			margin-bottom: 0;
+
+			color: var(--primary);
+			transition: color var(--transition);
+		}
+
+		&:hover {
+			.details, .details * {
+				color: var(--primary-dark);
+			}
+		}
+	}
+}
