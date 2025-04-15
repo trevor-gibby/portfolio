@@ -8,6 +8,8 @@ export default function Footer({
   pages = defaultPages
 }) {
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <footer>
@@ -27,7 +29,7 @@ export default function Footer({
                   {pages.map((page, index) => (
                     (page.showInMainNav) &&
                     <div key={index} className="col-12 col-md-4 col-lg-3 text-center">
-                      <Link href={page.slug} className="text-light hover-primary">{page.title}</Link>
+                      <Link href={page.slug} className="text-light hover-secondary">{page.title}</Link>
                     </div>
                   ))}
                 </div>
@@ -40,7 +42,7 @@ export default function Footer({
           <div className="container">
             <div className="row">
               <div className="col-12">
-                <p className="text-center mb-0" style={{fontSize: '50%', letterSpacing: '0.05rem'}}>© 2023 Trevor Gibby | All Rights Reserved</p>
+                <p className="text-center mb-0" style={{fontSize: '75%', letterSpacing: '0.05rem'}}>© {currentYear} Trevor Gibby | All Rights Reserved</p>
               </div>
             </div>
           </div>

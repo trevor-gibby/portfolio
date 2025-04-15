@@ -20,7 +20,7 @@
 
 			justify-content: center;
 
-			background-color: var(--secondary-dark);
+			background-color: var(--light);
 
 			@media(min-width: 992px) {
 				font-size: 1.4375rem;
@@ -33,7 +33,7 @@
 			font-weight: 700;
 			margin-bottom: 0;
 			
-			color: var(--light);
+			color: var(--secondary);
 			transition: color var(--transition);
 		}
 

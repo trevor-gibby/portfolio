@@ -17,7 +17,7 @@ export default function SubnavCard1({pages}) {
           return (
             (page.showInSubNav) &&
             <div key={index} className={`${styles.col} col-11 col-md-5 col-lg-4`}>
-              <a href={page.slug} className={`${styles.page_card} box-shadow box-shadow-hover`}>
+              <a href={page.slug} className={`${styles.page_card} box-shadow`}>
                 <img className={styles.img} alt={page.alt} src={page.img}/>
                 
                 <div className={styles.details}>

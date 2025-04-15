@@ -40,8 +40,11 @@
     "name": "Back End Web Development",
     "subSkills": [
       {
-        "name": "PHP 7, 8",
+        "name": "PHP 7",
         "badge": "/images/badges/php.svg"
+      },
+      {
+        "name": "PHP 8"
       },
       {
         "name": "Apache",
@@ -140,15 +143,6 @@
     ]
   },
   {
-    "name": "DevOps",
-    "subSkills": [
-      {
-        "name": "Docker",
-        "badge": "/images/badges/docker.webp"
-      }
-    ]
-  },
-  {
     "name": "CI/CD",
     "subSkills": [
       {
@@ -158,8 +152,25 @@
       {
         "name": "Bitbucket Pipelines",
         "badge": "/images/badges/bitbucket-pipelines.png"
+      },
+      {
+        "name": "DeployHQ"
+      }
+    ]
+  },
+  {
+    "name": "DevOps",
+    "subSkills": [
+      {
+        "name": "Docker",
+        "badge": "/images/badges/docker.webp"
+      },
+      {
+        "name": "CloudFlare"
+      },
+      {
+        "name": "Postman"
       }
     ]
   }
-  
 ]

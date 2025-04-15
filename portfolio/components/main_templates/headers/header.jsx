@@ -2,6 +2,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import ContactModal, { showModal, hideModal } from '@/components/content_widgets/contact-modal/contact-modal'
+
 import styles from './header.module.scss';
 
 import { useState, useEffect, useRef } from 'react'
@@ -67,8 +69,8 @@ export default function Header({
                 </ul>
               </nav>
               <div className={styles.item_append}>
-                <a target="_blank" rel="nofollow" href="/files/trevor-gibby-resume.pdf" className={"btn btn-secondary"}>Resume</a>
-                <a href="/contact" className={"btn btn-primary"}>Contact Me</a>
+                <a target="_blank" rel="nofollow" href="/files/trevor-gibby-resume-2025.pdf" className={"btn btn-secondary"}>Resume</a>
+                <a onClick={showModal} className={"btn btn-primary"}>Contact Me</a>
               </div>
               <div className={styles.mobile_nav_trigger} onClick={handleMobileNavTriggerClick}>
                 <i className={`${styles.close_icon} fa fa-xmark`} aria-hidden="true"></i>
