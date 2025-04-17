@@ -1,0 +1,176 @@
+@import 'styles/variables';
+.slick_slider {
+
+  
+  
+  :global {
+    @each $name, $hex in $colors {
+      .arrows-#{$name} {
+        --arrow-color: var(--#{$name}) !important;
+        --arrow-shadow: rgb(var(--#{$name}-rgb-format) / 0.5);
+      }
+    }
+    --arrow-color: var(--primary);
+    .slick-slider {
+      --arrow-size: 2.8125rem;
+      --offset: 0.5rem;
+      
+      @media (max-width: breakpoint('lg', false)) {
+        --arrow-size: 2.25rem;
+      }
+      
+      &:not(.slick-initialized) {
+        visibility: hidden;
+      }
+      
+      &:not(:has(.slick-arrow)) {
+        --arrow-size: 0;
+        --offset: 0;
+      }
+      
+      
+        
+      .slick-list {
+        
+        width: calc(100% - var(--arrow-size) * 2 - var(--offset));
+        left: calc(var(--arrow-size) + (var(--offset) / 2));
+        
+        padding: 0;
+        
+        .slick-track {
+          display: flex;
+          
+          .slick-item {
+            height: unset;
+            padding: 0;
+            
+            &:not(.slick-active) {
+              > * {
+                box-shadow: unset;
+              }
+            }
+          }
+        }
+      }
+      
+      .slick-prev, .slick-next {
+        width: var(--arrow-size);
+        height: var(--arrow-size);
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--arrow-color);
+        border-radius: 100%;
+
+        transition: var(--transition);
+
+        &:hover {
+          box-shadow: 0 0 0 0.2rem var(--arrow-shadow);
+        }
+      }
+      
+      .slick-prev {
+        left: calc(var(--bs-gutter-x) * 0.5);
+        @media (max-width: breakpoint('sm', false)) {
+          left: 0;
+        }
+      }
+      .slick-next {
+        right: calc(var(--bs-gutter-x) * 0.5);
+        @media (max-width: breakpoint('sm', false)) {
+          right: 0;
+        }
+      }
+      
+      .slick-prev::before, .slick-next::before {
+        display: block;
+        font-size: 1.25rem;
+        
+        position: absolute;
+        
+        color: var(--tertiary);
+        font-weight: 900;
+        opacity: 1;
+      }
+
+      .slick-prev::before {
+        content: '❮';
+        left: calc(var(--arrow-size) / 2 - 7px);
+        top: calc(var(--arrow-size) / 2 - 14px);
+      }
+      .slick-next::before {
+        content: '❯';
+        left: calc(var(--arrow-size) / 2 - 7px);
+        top: calc(var(--arrow-size) / 2 - 14px);
+      }
+      
+      &.slick-dotted {
+        margin-bottom: calc(-1 * (-1.89rem - 0.4375rem));
+        
+        .slick-dots {
+          --color: var(--primary);
+
+          @each $name, $hex in $colors {
+            &.#{$name} {
+              --color: var(--#{$name}) !important;
+            }
+          }
+          
+          left: calc(var(--bs-gutter-x) / 2 + 4px);
+          
+          bottom: -1.89rem;
+          display: flex;
+          align-items: flex-end;
+          gap: 0.375rem;
+          width: unset;
+          
+          --width: 1.875rem;
+          --height: 0.4375rem;
+          
+          li {
+            margin: 0;
+            height: var(--height);
+            width: var(--width);
+
+            button {
+              width: auto;
+              height: auto;
+              padding: 0;
+              
+              &::before {
+                content: '';
+                background-color: var(--color);
+                height: var(--height);
+                width: var(--width);
+                opacity: 0.5;
+
+                border-radius: var(--border-radius);
+                
+                transition: var(--transition);
+              }
+              
+              &:hover {
+                &::before {
+                  opacity: 0.75;
+                }
+              }
+            }
+            
+            &.slick-active {
+              button {
+                
+                &::before {
+                  background-color: var(--color);
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Main from '@/components/main_templates/main'
 import BgImg from '@/components/dynamic_content_widgets/bg-img/bg-img'
 import ContactModal, { showModal, hideModal } from '@/components/content_widgets/contact-modal/contact-modal'
-import SkillsModal, {showSkillsModal, hideSkillsModal} from '@/components/content_widgets/skills-modal/skills-modal'
+import SkillsModal, {showSkillsModal, hideSkillsModal} from '@/components/dynamic_content_widgets/skills-modal/skills-modal'
 import SubnavCard1 from '@/components/dynamic_content_widgets/subnav-card-1/subnav-card-1'
 import SkillsBadges1 from '@/components/dynamic_content_widgets/skills-badges-1/skills-badges-1'
 import CTA from '@/components/content_widgets/cta/cta'
@@ -37,7 +37,7 @@ return (
       <BgImg img="/images/hero.jpeg" alt={siteVariables.dba} add_classes="hero" overlay="dark" img_position="top" />
       <div className="container">
         <div className="row align-items-center" style={{height: 400}}>
-          <div className="col-12 text-center text-light">
+          <div className="col-12 text-center text-tertiary">
             <h1 className="h3 mb-5">Trevor Gibby - Full Stack Web Developer</h1>
             <h2 className="h1 mb-4">Innovative. Creative. Impactful.</h2>
             <div className="row justify-content-center">
@@ -45,7 +45,7 @@ return (
                 <a onClick={showModal} className="btn btn-primary btn-lg">Contact Me</a>
               </div>
               <div className="col-auto">
-                <a href="/my-work" className="btn btn-outline-light btn-lg">My Work</a>
+                <a href="/#my-work" className="btn btn-outline-tertiary btn-lg">My Work</a>
               </div>
             </div>
           </div>
@@ -74,7 +74,8 @@ return (
         <div className="row">
           <div className="col-lg-8 order-2 order-lg-1">
             <div className="py-lg-4">
-              <h2 className="h1 mb-4">About Me</h2>
+              <h2 className="h1 mb-0">About Me</h2>
+              <hr className="primary" />
               <p className="">I am a full stack web developer and development team lead with a passion for creating innovative and impactful web applications. I have experience with a wide range of technologies and frameworks, and I am always looking to learn more.</p>
               <p>
                 I received my Bachelor's degree in Computer Science from the Utah Valley University in 2023 with Summa Cum Laude Honors. In the computer science program at UVU I gained exposure to a wide range of technologies and programming languages. I also gained experience working in teams to complete projects. I was able to apply my knowledge and skills to a number of projects including a web application Family Feud style game, a mobile application for storing contacts, and a web application for managing clients.
@@ -94,25 +95,17 @@ return (
     </section>
 
     {/* My Work Layer - Cards with images and links to my work, see more button at bottom of section */}
-    <section id="my-work" className="bg-secondary text-light">
+    <section id="my-work" className="bg-secondary text-tertiary">
       <div className="container">
         <div className="row">
           <div className="col-lg-12 mb-2">
             <h2 className="h1 text-center text-lg-start mb-2">My Work</h2>
-            <hr className="light"/>
+            <hr className="tertiary"/>
           </div>
         </div>
-      </div>
-      <MyWorkCard1
-        items={mywork}
-      />
-
-      <div className="container mt-lg-4 mt-3">
-        <div className="row">
-          <div className="col-lg-12 text-center">
-            <a href="/my-work" className="btn btn-outline-light btn-lg btn-block">See More</a>
-          </div>
-        </div>
+        <MyWorkCard1
+          items={mywork}
+        />
       </div>
     </section>
 
@@ -145,11 +138,11 @@ return (
           <div className="col-12">
             <CTA
               color="primary"
-              textColor="light"
+              textColor="tertiary"
               title="Interested?"
               subtitle="Contact me to see how I can help you!"
-              button1={{text: 'Contact Me', color: 'outline-light', onClick: showModal}}
-              logoColor="wash"
+              button1={{text: 'Contact Me', color: 'outline-tertiary', onClick: showModal}}
+              logoColor="tertiary"
             />
           </div>
         </div>

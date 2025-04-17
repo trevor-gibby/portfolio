@@ -3,7 +3,7 @@
     "title": "Canopy",
     "highlight": true,
     "short_description": "",
-    "long_description": "",
+    "long_description": "Canopy is a B2B client management system that has been optimized for franchise-style clients. It allows for seemless management of brands at the company or location-specific level. It features secure Oauth login, user management, update history, several searching/filtering options using an intuitive UI, and a robust API for integration with other systems. It is built using Next.js, Prisma managing a MySQL database, a Redis layer for caching data, and Bootstrap for styling.",
     "image": "/images/mywork/canopy/canopy1.png",
     "image_alt": "Canopy x Ninthroot",
     "link": "",
@@ -20,7 +20,7 @@
     "title": "UVU Feud",
     "highlight": true,
     "short_description": "",
-    "long_description": "",
+    "long_description": "UVU Feud is a Jackbox-style game that allows players to answer questions in a family feud style format. It features different UIs for players, the host, and the gameboard each with unique functionality. It utilizes Socket.io for real-time communication between the host and players, and a Node.js backend to manage game state. The game is built using Vue for the frontend and Express.js for the backend with a MongoDB database. It is integrated with a Family Feud API to provide real questions and answers.",
     "image": "/images/mywork/uvu-feud/uvu-feud10.png",
     "image_alt": "UVU Feud",
     "link": "https://github.com/trevor-gibby/UVU-Feud",
@@ -30,29 +30,16 @@
     ]
   },
   {
-    "title": "Fantasy Basketball",
+    "title": "Slide Puzzle",
     "highlight": true,
     "short_description": "",
-    "long_description": "",
-    "image": "/images/mywork/fantasy-basketball/fantasy-basketball1.png",
-    "image_alt": "Fantasy Basketball",
-    "link": "https://github.com/trevor-gibby/Fantasy-Team-Management-System",
-
-    "gallery": [
-
-    ]
-  },
-  {
-    "title": "Redis Integration",
-    "highlight": true,
-    "short_description": "",
-    "long_description": "",
-    "image": "/images/mywork/redis-integration/redis-integration1.png",
-    "image_alt": "Redis Integration",
+    "long_description": "This is a simple slide puzzle game that allows users to select from a variety of images to play with and sizes ranging from 3x3 to 5x5. It features a timer and a move counter to track progress. It is an entirely frontend application built using vanilla JavaScript, HTML, and CSS.",
+    "image": "/images/mywork/slide-puzzle/slide-puzzle.png",
+    "image_alt": "Slide Puzzle",
+    "link": "https://github.com/trevor-gibby/sliding-puzzle",
 
     "gallery": [
 
     ]
   }
-
 ]

@@ -1,44 +1,111 @@
 .mywork_card_1 {
-	.item_card {
-		border-radius: var(--border-radius);
-		display: block;
 
-		.img {
-			width: 100%;
-			aspect-ratio: 2;
-			object-fit: cover;
-			object-position: center;
-			
-			border-radius: var(--border-radius) var(--border-radius) 0 0;
-		}
+	overflow: hidden;
+	--height: 20rem;
+	--spacing: 1.56rem;
+	--overlay-size: 2rem;
+	position: relative;
 
-		.details {
-			display: flex;
-			gap: 0.5rem;
-			padding: 0.8rem;
-			align-items: center;
+	// Faded overlay on the sides
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
 
-			justify-content: center;
+		width: calc(var(--bs-gutter-x));
+		z-index: 1;
+		background: linear-gradient(to right, var(--secondary) 0%, var(--secondary) 50%, rgb(var(--secondary-rgb-format) / 0) 100%);
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
 
-			background-color: var(--light);
+		width: calc(var(--bs-gutter-x));
+		z-index: 1;
+		background: linear-gradient(to left, var(--secondary) 0%, var(--secondary) 50%, rgb(var(--secondary-rgb-format) / 0) 100%);
+	}
 
-			@media(min-width: 992px) {
-				font-size: 1.4375rem;
-				padding: 1rem;
+
+	:global {
+
+		.item {
+			height: var(--height);
+			.card-wrapper {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				border-radius: var(--border-radius);
+				overflow: hidden;
+				cursor: pointer;
+				
+				.img {
+					flex-grow: 1;
+					position: relative;
+					overflow: hidden;
+					
+					img {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						object-position: center;
+					}
+				}
+
+				.title {
+					font-size: 1.25rem;
+					text-transform: uppercase;
+					font-weight: 700;
+					color: var(--primary);
+					background: var(--tertiary);
+					padding: 1rem;
+					text-align: center;
+					transition: var(--transition);
+				}
 			}
 		}
-		.details, .details * {
-			font-size: 1.5rem;
-			text-transform: uppercase;
-			font-weight: 700;
-			margin-bottom: 0;
-			
-			color: var(--secondary);
-			transition: color var(--transition);
-		}
 
-		&:hover .details, &:hover .details * {
-			color: var(--primary);
+		.slick-slider {
+			display: flex;
+			justify-content: center;
+
+			.slick-list {
+				width: 50% !important;
+				left: unset !important;
+				overflow: visible;
+
+				.slick-slide {
+					height: unset;
+
+					&.slick-active {
+						&:hover {
+							.item .card-wrapper .title {
+								background: var(--primary);
+								color: var(--tertiary);
+							}
+						}
+					}
+
+					&:not(.slick-active) {
+						.item {
+							transition: var(--transition);
+							opacity: 0.5;
+							padding: var(--spacing);
+
+							&:hover {
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

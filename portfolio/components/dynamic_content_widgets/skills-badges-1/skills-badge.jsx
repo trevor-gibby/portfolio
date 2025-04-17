@@ -10,6 +10,11 @@ export default function SkillsBadge({item}) {
         )
       })
     :
+
+      // If item doesn't have a badge then skip
+      (!item.badge) ?
+        null
+      :
       <li>
         
         {(item.link) ?

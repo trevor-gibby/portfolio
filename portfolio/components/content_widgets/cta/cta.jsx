@@ -1,7 +1,7 @@
 
 import styles from './cta.module.scss';
 
-export default function CTA({color = "primary", textColor = "light", title, subtitle, button1, button2, logo = "/logos/tg-logo", logoColor = "wash"})
+export default function CTA({color = "primary", textColor = "tertiary", title, subtitle, button1, button2, logo = "/logos/tg-logo", logoColor = "tertiary"})
 {
   return (
     <div className={`${styles.cta} bg-${color} text-${textColor}`}>
@@ -18,7 +18,7 @@ export default function CTA({color = "primary", textColor = "light", title, subt
           <div className={`${styles.buttonRow} row justify-content-lg-end align-items-end`}>
             <div className={`col-auto`}>
               <a 
-                  href={button1.link || ""} 
+                  href={button1.link || null} 
                   className={`btn btn-${button1.color}`} 
                   onClick={button1.onClick ? button1.onClick : undefined}
                 >
@@ -28,7 +28,7 @@ export default function CTA({color = "primary", textColor = "light", title, subt
             {button2 && 
             <div className={`col-auto mt-2`}>
               <a 
-                href={button2.link || ""} 
+                href={button2.link || null} 
                 className={`btn btn-${button2.color}`} 
                 onClick={button2.onClick ? button2.onClick : undefined}
               >

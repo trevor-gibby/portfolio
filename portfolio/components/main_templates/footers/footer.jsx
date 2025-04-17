@@ -18,27 +18,27 @@ export default function Footer({
             <div className="row justify-content-center">
               <div className="col-7 col-md-5">
                 <Link href="/">
-                  <img className="img-fluid" alt="Trevor Gibby Full Stack Developer" src="/logos/trevor-gibby-logo.wash.svg" />
+                  <img className="img-fluid" alt="Trevor Gibby Full Stack Developer" src="/logos/trevor-gibby-logo.tertiary.svg" />
                 </Link>
               </div>
             </div>
             <div className="row mt-lg-5 mt-3">
               <div className="col-12">
-                <hr className="light thin" />
+                <hr className="tertiary thin" />
                 <div className="row justify-content-center">
                   {pages.map((page, index) => (
                     (page.showInMainNav) &&
                     <div key={index} className="col-12 col-md-4 col-lg-3 text-center">
-                      <Link href={page.slug} className="text-light hover-secondary">{page.title}</Link>
+                      <Link href={page.slug} className="text-tertiary hover-secondary">{page.title}</Link>
                     </div>
                   ))}
                 </div>
-                <hr className="light thin" />
+                <hr className="tertiary thin" />
               </div>
             </div>
           </div>
         </section>
-        <section className="py-3 bg-dark text-light" style={{borderTop: '1px solid rgb(var(--light-rgb-format) / 0.2)'}}>
+        <section className="py-3 bg-dark text-tertiary" style={{borderTop: '1px solid rgb(var(--tertiary-rgb-format) / 0.2)'}}>
           <div className="container">
             <div className="row">
               <div className="col-12">

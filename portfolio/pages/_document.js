@@ -12,6 +12,9 @@ export default function Document() {
         referrerPolicy="no-referrer" 
       />
 
+      {/* Fancybox */}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+
       <link rel="shortcut icon" href="/logos/tg-logo-alt.primary.svg" />
       </Head>
       <body>

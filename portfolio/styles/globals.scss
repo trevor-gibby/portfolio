@@ -1,15 +1,7 @@
 /* -------------------------------------------------------------------------- */
 /*                                  Variables                                 */
 /* -------------------------------------------------------------------------- */
-$colors: (
-  primary: #006d77,
-  secondary: #83c5be,
-  tertiary: #edf6f9,
-  quaternary: #ffddd2,
-  quinary: #e29578,
-  dark: #111,
-  light: #ffffff
-);
+@import 'styles/variables';
 :root {
 
   @each $color-name, $color-value in $colors {
@@ -249,7 +241,7 @@ h6, .h6 {
     border: 1px solid #{$color-value};
     transition: var(--transition);
 
-    &:hover, &:focus, &:focus-visible, &:active, &:first-child:active {
+    &:hover, &:focus-visible, &:active, &:first-child:active {
       background-color: #{$color-value};
       border-color: #{$color-value};
       box-shadow: 0 0 0 0.2rem rgba(red($color-value), green($color-value), blue($color-value), 0.5);
@@ -263,7 +255,7 @@ h6, .h6 {
     border: 1px solid #{$color-value};
     transition: var(--transition);
 
-    &:hover, &:focus, &:focus-visible, &:active, &:first-child:active {
+    &:hover, &:focus-visible, &:active, &:first-child:active {
       background-color: #{$color-value};
       border-color: #{$color-value};
       color: var(--light);
@@ -271,8 +263,8 @@ h6, .h6 {
     }
   }
 }
-.btn.btn-outline-light {
-  &:hover, &:focus-visible {
+.btn.btn-outline-light, .btn.btn-outline-tertiary {
+  &:hover, &:focus, &:focus-visible, &:active, &:first-child:active {
     color: var(--primary);
   }
 }
@@ -359,6 +351,11 @@ hr.thin {
   object-position: var(--bg-img-position, center);
   top: 0;
   left: 0;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
 }
 
 /* -------------------------------------------------------------------------- */

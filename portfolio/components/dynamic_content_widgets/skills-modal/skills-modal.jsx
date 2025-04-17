@@ -27,8 +27,8 @@ const SkillsModal = () => {
       <Modal.Body>
         <div className={`${styles.skills_modal_content} row`}>
           {skills.map((skill, index) => (
-            <div className="col-lg-6">
-              <div key={index} className={styles.skill}>
+            <div key={index} className="col-lg-6">
+              <div className={styles.skill}>
                 <h3 className={`h4 ${styles.skill_title}`}>{skill.name}</h3>
                 <ul className={styles.skill_list}>
                   {skill.subSkills.map((item, idx) => (
