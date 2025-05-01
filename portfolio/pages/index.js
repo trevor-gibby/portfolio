@@ -87,7 +87,7 @@ return (
           </div>
           <div className="col-lg-4 order-lg-2 order-1 mb-3 mb-lg-0">
             <div className="bg-img-wrapper h-100 box-shadow" style={{'--bg-img-min-h': '500px'}}>
-              <img className="bg-img" src="/headshots/headshot2.jpg" alt="Trevor Gibby" />
+              <img className="bg-img" src="/headshots/headshot1-2.jpeg" alt="Trevor Gibby" />
             </div>
           </div>
         </div>
