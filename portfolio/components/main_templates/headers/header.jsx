@@ -46,6 +46,10 @@ export default function Header({
     setIsMobileNavOpen(!isMobileNavOpen)
   }
 
+  const handleCloseMobileNav = () => {
+    setIsMobileNavOpen(false)
+  }
+
   // Handle mobile logo swap
   const handleMobileLogoSwap = () => {
     if (window.innerWidth < 992) {
@@ -88,7 +92,7 @@ export default function Header({
                         
                         {page.slug.startsWith('#') ? (
                           // Handle fragment links
-                          <a href={page.slug} onClick={handleMobileNavTriggerClick}>
+                          <a href={page.slug} onClick={handleCloseMobileNav}>
                             {page.title}
                           </a>
                         ) : (
