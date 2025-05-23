@@ -17,14 +17,26 @@ export default function SubnavCard1({pages}) {
           return (
             (page.showInSubNav) &&
             <div key={index} className={`${styles.col} col-11 col-md-5 col-lg-4`}>
-              <a href={page.slug} className={`${styles.page_card} box-shadow`}>
-                <img className={styles.img} alt={page.alt} src={page.img}/>
-                
-                <div className={styles.details}>
-                  <h3 className={styles.title}>{page.title}</h3>
-                  <i className="fa-solid fa-chevron-right"></i>
-                </div>
-              </a>
+
+              {page.slug.startsWith('#') ? (
+                <a href={page.slug} className={`${styles.page_card} box-shadow`}>
+                  <img className={styles.img} alt={page.alt} src={page.img}/>
+                  
+                  <div className={styles.details}>
+                    <h3 className={styles.title}>{page.title}</h3>
+                    <i className="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+              ) : (
+                <Link href={page.slug} className={`${styles.page_card} box-shadow`}>
+                  <img className={styles.img} alt={page.alt} src={page.img}/>
+                  
+                  <div className={styles.details}>
+                    <h3 className={styles.title}>{page.title}</h3>
+                    <i className="fa-solid fa-chevron-right"></i>
+                  </div>
+                </Link>
+              )}
             </div>
           )
         })}

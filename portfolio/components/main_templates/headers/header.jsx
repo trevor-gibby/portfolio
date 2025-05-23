@@ -16,6 +16,7 @@ export default function Header({
 
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [logo, setLogo] = useState('/logos/trevor-gibby-logo.primary.svg')
 
   const handleScroll = () => {
     if (window.scrollY > 40) {
@@ -45,6 +46,28 @@ export default function Header({
     setIsMobileNavOpen(!isMobileNavOpen)
   }
 
+  // Handle mobile logo swap
+  const handleMobileLogoSwap = () => {
+    if (window.innerWidth < 992) {
+      setLogo('/logos/tg-logo.primary.svg')
+    } else {
+      setLogo('/logos/trevor-gibby-logo.primary.svg')
+    }
+  }
+
+  useEffect(() => {
+    // Check on mount if mobile
+    handleMobileLogoSwap();
+
+    // Add event listener resize
+    window.addEventListener('resize', handleMobileLogoSwap);
+
+    return () => {
+      // Remove event listener on unmount
+      window.removeEventListener('resize', handleMobileLogoSwap);
+    };
+  }, []);
+
   return (
     <>
       <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isMobileNavOpen ? styles.open : ''}`}>
@@ -52,7 +75,7 @@ export default function Header({
           <div className={styles.main_nav}>
             <div className={styles.logo}>
               <Link href="/">
-                <img alt="Trevor Gibby Full Stack Developer" src="/logos/trevor-gibby-logo.primary.svg" />
+                <img alt="Trevor Gibby Full Stack Developer" src={logo} />
               </Link>
             </div>
             <div className={styles.items}>
@@ -62,7 +85,18 @@ export default function Header({
                     return (
                       (page.showInMainNav) &&
                       <li key={index}>
-                        <Link href={page.slug}>{page.title}</Link>
+                        
+                        {page.slug.startsWith('#') ? (
+                          // Handle fragment links
+                          <a href={page.slug} onClick={handleMobileNavTriggerClick}>
+                            {page.title}
+                          </a>
+                        ) : (
+                          // Handle regular links
+                          <Link href={page.slug}>
+                            {page.title}
+                          </Link>
+                        )}
                       </li>
                     )
                   })}

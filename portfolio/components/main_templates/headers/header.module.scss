@@ -157,6 +157,11 @@ header.header {
             top: 0;
             transition: all var(--transition);
             width: var(--nav-mobile-width);
+            padding-inline: 20px;
+
+            @media(min-width: 992px) {
+              padding-inline: 0;
+            }
 
             > li {
               > a {

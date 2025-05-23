@@ -143,11 +143,11 @@ h6, .h6 {
 /* -------------------------------------------------------------------------- */
 :root {
   --nav-width: var(--container-w);
-  --nav-mobile-width: 93%;
+  --nav-mobile-width: 100%;
 
   --nav-logo-desktop-width: 15rem;
   --nav-logo-desktop-scrolled-width: 12rem;
-  --nav-logo-mobile-width: 7rem;
+  --nav-logo-mobile-width: 3.25rem;
 
   --nav-logo-desktop-offset: 0rem;
   --nav-logo-desktop-scrolled-offset: 0rem;
@@ -171,10 +171,10 @@ h6, .h6 {
   --nav-text-color: var(--dark);
   --nav-dropdown-text-color: var(--dark);
   --nav-mobile-text-color: var(--dark);
-  --nav-hover-text-color: var(--light);
-  --nav-hover-dropdown-text-color: var(--light);
-  --nav-hover-effect-color: var(--primary);
-  --nav-hover-dropdown-effect-color: var(--primary);
+  --nav-hover-text-color: var(--primary);
+  --nav-hover-dropdown-text-color: var(--primary);
+  --nav-hover-effect-color: transparent;
+  --nav-hover-dropdown-effect-color: transparent;
 
   --nav-mobile-border-color: rgb(var(--primary-rgb-format) / 0.5);
 }
