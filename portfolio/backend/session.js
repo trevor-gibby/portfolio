@@ -1,7 +1,6 @@
 import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
 
 const days = 1;
-// const sessionToken = "HYtyPGEvL*ZkC*k3kL8f_Wcr4DZNA*mN";
 
 
 const iron_options = {

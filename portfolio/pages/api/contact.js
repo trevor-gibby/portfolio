@@ -6,6 +6,7 @@ export default withSessionRoute(
   async (req, res) => {
     
     if(req.method === 'POST') {
+      console.log('contact api called')
       const { honeyPot, name, email, message } = req.body
 
       if(!name || !email || !message) {
