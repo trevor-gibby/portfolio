@@ -2,7 +2,6 @@ const nodemailer = require('nodemailer');
 
 async function sendEmail(subject, html) {
   try {
-    console.log('mailer called');
     const to = process.env.MY_EMAIL
     const from = process.env.SMTP_EMAIL
     // Create a transporter using Gmail SMTP

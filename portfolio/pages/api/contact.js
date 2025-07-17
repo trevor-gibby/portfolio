@@ -6,7 +6,6 @@ export default withSessionRoute(
   async (req, res) => {
     
     if(req.method === 'POST') {
-      console.log('contact api called')
       const { honeyPot, name, email, message } = req.body
 
       if(!name || !email || !message) {
@@ -33,7 +32,7 @@ export default withSessionRoute(
         <p><strong>Message:</strong> ${message}</p>
       `;
 
-      const result = sendEmail(subject, html)
+      const result = await sendEmail(subject, html)
       if(!result) {
         res.status(500).json({ error: 'Error sending email' })
         return;
