@@ -2,6 +2,7 @@
 	.page_card {
 		border-radius: var(--border-radius);
 		display: block;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
 		.img {
 			width: 100%;
@@ -39,6 +40,9 @@
 		}
 
 		&:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.5);
+
 			.details {
 				background-color: var(--primary);
 			}

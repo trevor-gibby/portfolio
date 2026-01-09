@@ -14,6 +14,9 @@ export default function Header({
   pages = defaultPages
 }) {
 
+  const mainNavPages = pages.filter(page => page.showInMainNav)
+  const tertiaryNavPages = pages.filter(page => page.showInTertiaryNav)
+
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [logo, setLogo] = useState('/logos/trevor-gibby-logo.primary.svg')
@@ -75,6 +78,25 @@ export default function Header({
   return (
     <>
       <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isMobileNavOpen ? styles.open : ''}`}>
+        {/* Tertiary Nav - Top Bar */}
+        <div className={styles.tertiary_bar}>
+          <div className="container">
+            <div className={styles.tertiary_nav}>
+              {tertiaryNavPages.map((page, index) => {
+                return page.openInNewTab ? (
+                  <a key={index} href={page.slug} target="_blank" rel="noopener noreferrer" title={page.title}>
+                    <i className={page.icon} aria-hidden="true"></i>
+                  </a>
+                ) : (
+                  <Link key={index} href={page.slug} title={page.title}>
+                    <i className={page.icon} aria-hidden="true"></i>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+        {/* Main Nav */}
         <div className={`container ${styles.nav_container}`}>
           <div className={styles.main_nav}>
             <div className={styles.logo}>
@@ -85,12 +107,14 @@ export default function Header({
             <div className={styles.items}>
               <nav className={styles.nav} role="navigation">
                 <ul className={styles.level_1}>
-                  {pages.map((page, index) => {
+                  {mainNavPages.map((page, index) => {
+                    // Check if slug is a hash link (either #section or /#section)
+                    const isHashLink = page.slug.startsWith('#') || page.slug.startsWith('/#')
+                    
                     return (
-                      (page.showInMainNav) &&
                       <li key={index}>
                         
-                        {page.slug.startsWith('#') ? (
+                        {isHashLink ? (
                           // Handle fragment links
                           <a href={page.slug} onClick={handleCloseMobileNav}>
                             {page.title}
@@ -99,6 +123,22 @@ export default function Header({
                           // Handle regular links
                           <Link href={page.slug}>
                             {page.title}
+                          </Link>
+                        )}
+                      </li>
+                    )
+                  })}
+                  {/* Tertiary nav items in mobile dropdown */}
+                  {tertiaryNavPages.map((page, index) => {
+                    return (
+                      <li key={`tertiary-${index}`} className={styles.mobile_tertiary_item}>
+                        {page.openInNewTab ? (
+                          <a href={page.slug} target="_blank" rel="noopener noreferrer" onClick={handleCloseMobileNav}>
+                            <i className={page.icon} aria-hidden="true"></i> {page.title}
+                          </a>
+                        ) : (
+                          <Link href={page.slug} onClick={handleCloseMobileNav}>
+                            <i className={page.icon} aria-hidden="true"></i> {page.title}
                           </Link>
                         )}
                       </li>

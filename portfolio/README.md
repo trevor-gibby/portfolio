@@ -1,38 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Trevor Gibby - Portfolio
+
+Personal portfolio website showcasing my work as a Full Stack Web Developer.
+
+**Live Site:** [trevorgibby.dev](https://trevorgibby.dev)
+
+## Tech Stack
+
+- **Framework:** Next.js 13 (Pages Router)
+- **Styling:** SCSS Modules + Bootstrap 5
+- **Animations:** Framer Motion
+- **Deployment:** Vercel
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Environment Variables
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Create a `.env.local` file with:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+MY_EMAIL=your-email@example.com
+SMTP_EMAIL=sender@example.com
+SMTP_APP_PASSWORD=your-gmail-app-password
+SESSION_TOKEN=your-secret-session-token
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project Structure
 
-## Learn More
+```
+components/
+  main_templates/     # Page wrappers (Main, Header, Footer)
+  content_widgets/    # Static UI components
+  dynamic_content_widgets/  # Data-driven components
+variables/            # JSON content files (skills, projects, pages)
+backend/              # Server utilities (session, mailer)
+pages/api/            # API routes
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Adding Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Projects:** Edit `variables/my-work.json`
+- **Skills:** Edit `variables/skills.json`
+- **Navigation:** Edit `variables/pages.json`

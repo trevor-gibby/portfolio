@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import Main from '@/components/main_templates/main'
 import BgImg from '@/components/dynamic_content_widgets/bg-img/bg-img'
 import ContactModal, { showModal, hideModal } from '@/components/content_widgets/contact-modal/contact-modal'
@@ -10,15 +11,24 @@ import SubnavCard1 from '@/components/dynamic_content_widgets/subnav-card-1/subn
 import SkillsBadges1 from '@/components/dynamic_content_widgets/skills-badges-1/skills-badges-1'
 import CTA from '@/components/content_widgets/cta/cta'
 import MyWorkCard1 from '@/components/dynamic_content_widgets/my-work-card-1/my-work-card-1'
+import BlogCard from '@/components/dynamic_content_widgets/blog-card/blog-card'
 
 import pages from '@/variables/pages.json';
 import skills from '@/variables/skills.json';
 import mywork from '@/variables/my-work.json';
+import blogPostsData from '@/variables/blog-posts.json';
+const blogPosts = blogPostsData.posts;
 
 export default function Home({siteVariables, session}) {
 
   const [uuid, setUuid] = useState(null)
   const [messageSent, setMessageSent] = useState(false)
+
+  // Get recent published posts (up to 3)
+  const recentPosts = blogPosts
+    .filter(post => post.published)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3)
 
   useEffect(() => {
     if (session) {
@@ -76,12 +86,17 @@ return (
             <div className="py-lg-4">
               <h2 className="h1 mb-0">About Me</h2>
               <hr className="primary" />
-              <p className="">I am a full stack web developer and development team lead with a passion for creating innovative and impactful web applications. I have experience with a wide range of technologies and frameworks, and I am always looking to learn more.</p>
+              <p className="">
+                I am a Full Stack Engineer and Team Lead with 5 years of engineering experience and 2 years leading teams building large-scale marketing applications. I'm experienced in designing and delivering end-to-end systems, mentoring engineers, and driving improvements in code quality, delivery velocity, and cross-team collaboration.
+              </p>
               <p>
                 I received my Bachelor's degree in Computer Science from the Utah Valley University in 2023 with Summa Cum Laude Honors. In the computer science program at UVU I gained exposure to a wide range of technologies and programming languages. I also gained experience working in teams to complete projects. I was able to apply my knowledge and skills to a number of projects including a web application Family Feud style game, a mobile application for storing contacts, and a web application for managing clients.
               </p>
               <p>
-                I have also worked as a full stack web developer for the past 4 years at <a href="https://ninthroot.com" rel="nofollow" target="_blank">Ninthroot</a>. As a digital marketing agency, Ninthroot has given me the opportunity to work on a wide range of front end sites each with their own unique brands and styles. In total I have so far led the development of 15 new websites for our clients. I also worked on a number of backend projects including developing our own PHP based framework, building out additional functionality for our own content management system and designing and building a custom CRM from scratch. With a focus on not only building products but also streamlining DevOps and team practices, I've had exposure to all the requirements of a full stack developer.
+                I’ve spent the past 5 years as a full stack engineer at <a href="https://ninthroot.com" rel="nofollow" target="_blank">Ninthroot</a>, a digital marketing agency where I’ve had the chance to work across a wide range of products and teams. Much of my work has involved building and launching consumer-facing websites with unique brands and designs — including leading the development of 15+ new client sites — while also contributing to the systems that power them behind the scenes.
+              </p>
+              <p>
+                On the backend, I’ve worked on everything from evolving our PHP-based framework and content management system to designing and building internal applications from the ground up. Along the way, I’ve also been closely involved in improving our deployment workflows and team practices, which has given me a strong appreciation for building not just features, but reliable systems and healthy engineering processes.
               </p>
             </div>
           </div>
@@ -130,6 +145,32 @@ return (
         </div>
       </div>
     </section>
+
+    {/* Recent Posts Layer */}
+    {recentPosts.length > 0 && (
+      <section id="blog" className="pt-0">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 mb-4">
+              <h2 className="h1 text-center text-lg-start mb-2">Recent Posts</h2>
+              <hr className="primary"/>
+            </div>
+          </div>
+          <div className="row">
+            {recentPosts.map((post, index) => (
+              <div key={index} className="col-lg-4 col-md-6 mb-4">
+                <BlogCard post={post} />
+              </div>
+            ))}
+          </div>
+          <div className="row">
+            <div className="col-12 text-center mt-2">
+              <Link href="/blog" className="btn btn-outline-primary btn-lg">View All Posts</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     {/* CTA Layer */}
     <section className="pt-0">

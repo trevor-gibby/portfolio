@@ -1,0 +1,33 @@
+{
+  "_schema": {
+    "_description": "Blog post data structure reference (this object is ignored by the app)",
+    "slug": "string - URL slug, must match filename in blog-posts/*.html",
+    "title": "string - Post title",
+    "excerpt": "string - Brief summary for cards and meta description",
+    "date": "string - ISO date format (YYYY-MM-DD)",
+    "author": "string - Author name (optional)",
+    "tags": ["string array - Categories/tags for the post"],
+    "image": "string - Path to featured image (optional)",
+    "published": "boolean - Set false to hide post",
+    "sources": [
+      {
+        "title": "string - Source title (required)",
+        "url": "string - Link to source (optional)",
+        "author": "string - Source author (optional)",
+        "date": "string - Source publication date (optional)"
+      }
+    ]
+  },
+  "posts": [
+    {
+      "slug": "welcome-to-my-blog",
+      "title": "Welcome to My Blog",
+      "excerpt": "An introduction to my new blog where I'll be sharing thoughts on software engineering, technology, and my journey as a full stack engineer.",
+      "date": "2026-01-09",
+      "author": "Trevor Gibby",
+      "tags": ["general", "introduction"],
+      "image": "/images/blog/welcome.jpeg",
+      "published": true
+    }
+  ]
+}

@@ -7,6 +7,7 @@ header.header {
   background: var(--bg-color);
   font-size: 1rem;
 
+  --tertiary-bar-height: 0px;
   --nav-height: var(--nav-mobile-height);
   --nav-logo-width: var(--nav-logo-mobile-width);
   --nav-logo-offset: var(--nav-logo-mobile-offset);
@@ -15,12 +16,14 @@ header.header {
   transition: all var(--transition);
 
   @media(min-width: 992px) {
+    --tertiary-bar-height: 24px;
     --nav-height: var(--nav-desktop-height);
     --nav-logo-width: var(--nav-logo-desktop-width);
     --nav-logo-offset: var(--nav-logo-desktop-offset);
     --nav-font-size: var(--nav-desktop-font-size);
 
     &.scrolled {
+      --tertiary-bar-height: 0px;
       --nav-height: var(--nav-scrolled-height);
       --nav-logo-width: var(--nav-logo-desktop-scrolled-width);
       --nav-logo-offset: var(--nav-logo-desktop-scrolled-offset);
@@ -30,6 +33,47 @@ header.header {
 
   &.open, &.scrolled {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .tertiary_bar {
+    display: none;
+    background: var(--tertiary);
+    height: var(--tertiary-bar-height);
+    overflow: hidden;
+    transition: height var(--transition);
+
+    @media(min-width: 992px) {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .container {
+      height: 100%;
+    }
+
+    .tertiary_nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      gap: 0.25rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+        transition: color var(--transition);
+        opacity: 0.85;
+
+        &:hover {
+          opacity: 1;
+          color: var(--dark);
+        }
+      }
+    }
   }
 
   .nav_container {
@@ -251,6 +295,16 @@ header.header {
                 margin-right: 0.8rem;
               }
             }
+          }
+        }
+
+        .mobile_tertiary_item {
+          @media(min-width: 992px) {
+            display: none !important;
+          }
+
+          a i {
+            margin-right: 0.5rem;
           }
         }
 
