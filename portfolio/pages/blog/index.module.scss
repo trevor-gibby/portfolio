@@ -1,0 +1,113 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 11rem 0 6rem;
+  background:
+    radial-gradient(circle at 80% 100%, rgba(250, 117, 168, 0.18), transparent 45%),
+    linear-gradient(135deg, #090a11, #15131e);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    opacity: 0.28;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to right, black, transparent);
+    content: '';
+  }
+
+  :global(.container) {
+    z-index: 1;
+  }
+
+  > div > p:first-child {
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-family: var(--font-label);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 70rem;
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 9vw, 8.5rem);
+    font-weight: 800;
+    letter-spacing: -0.07em;
+    line-height: 0.92;
+
+    span {
+      color: var(--primary);
+    }
+  }
+}
+
+.heroBottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-end;
+  padding-top: 4rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  p {
+    max-width: 33rem;
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  span {
+    color: rgba(255, 255, 255, 0.36);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+  }
+}
+
+.posts {
+  min-height: 35vh;
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: var(--background);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.empty {
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 9rem 0 4rem;
+  }
+
+  .heroBottom {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

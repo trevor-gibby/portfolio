@@ -50,6 +50,7 @@ export default function ContactForm({ messageSent }) {
     } catch (error) {
       // Handle error
       console.error('Error submitting form:', error);
+      setErrorMessage('There was an error submitting your message. Please try again or email me directly.');
       setIsSubmitting(false);
     }
   };
@@ -60,7 +61,7 @@ export default function ContactForm({ messageSent }) {
         <p className={styles.success_message}>{successMessage}</p>
       ) : (
         <div>
-          {errorMessage && <p className={styles.error_message}>{errorMessage}</p>}
+          {errorMessage && <p role="alert" className={styles.error_message}>{errorMessage}</p>}
           {isSubmitting && <div className={styles.submitting_spinner}></div>}
           <p>
             Feel free to reach out to me at{' '}
@@ -103,7 +104,7 @@ export default function ContactForm({ messageSent }) {
               </Form.Group>
               <Form.Group className={`${styles.form_group} col-12`} controlId='submit'>
                 <Button className="btn-block" variant='primary' type='submit'>
-                  Submit
+                  {isSubmitting ? 'Sending…' : 'Send Message'}
                 </Button>
               </Form.Group>
             </div>

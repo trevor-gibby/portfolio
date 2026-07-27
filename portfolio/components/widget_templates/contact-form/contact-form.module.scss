@@ -1,63 +1,120 @@
 .contact_form {
-	form {
-		.form_group {
-			position: relative;
+  position: relative;
 
-			&:not(:last-child) {
-				margin-bottom: 12px;
-			}
+  > div > p {
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.9rem;
+    line-height: 1.7;
 
-			label {
-				font-size: 12px;
-				line-height: 13px;
-				font-weight: 400;
-				font-family: var(--font-primary);
-				position: absolute;
-				top: 6px;
-				left: calc(var(--bs-gutter-x) * 0.5 + 6px);
-				margin-bottom: 0;
-			}
+    a {
+      color: #fff;
+      border-bottom: 1px solid rgba(250, 117, 168, 0.55);
+    }
+  }
 
-			.form_control {
-				border-radius: var(--border-radius);
-				height: 40px;
-				padding-top: 20px;
-				padding-left: 6px;
-				font-size: 12px;
-				color: var(--font-color);
+  form {
+    position: relative;
 
-				&:focus {
-					border-radius: var(--border-radius);
-					box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 25%);
-					border-color: var(--primary);
-				}
+    .form_group {
+      position: relative;
 
-				&:-webkit-autofill,
-				&:-webkit-autofill:hover,
-				&:-webkit-autofill:focus,
-				&:-webkit-autofill:active {
-					border-radius: var(--border-radius);
-					-webkit-box-shadow: 0 0 0 30px #fff inset !important;
-					-webkit-text-fill-color: var(--font-color) !important;
-				}
-			}
+      &:not(:last-child) {
+        margin-bottom: 0.9rem;
+      }
 
-			textarea.form_control {
-				min-height: 125px;
-			}
-		}
-	}
-	.success_message {
-		color: var(--primary);
-		font-size: 16px;
-		font-weight: 600;
-		margin-bottom: 0;
-	}
-	
-	.error_message {
-		color: #ff0000;
-		font-size: 16px;
-		font-weight: 600;
-		margin-bottom: 1rem;
-	}
+      label {
+        position: absolute;
+        z-index: 2;
+        top: 0.55rem;
+        left: calc(var(--bs-gutter-x) * 0.5 + 0.85rem);
+        margin: 0;
+        color: rgba(255, 255, 255, 0.42);
+        font-family: var(--font-label);
+        font-size: 0.55rem;
+        font-weight: 500;
+        letter-spacing: 0.13em;
+        line-height: 1.2;
+        text-transform: uppercase;
+      }
+
+      .form_control {
+        min-height: 3.75rem;
+        padding: 1.55rem 0.85rem 0.55rem;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 11px;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.035);
+        box-shadow: none;
+        font-size: 0.9rem;
+        transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+
+        &:focus {
+          border-color: rgba(250, 117, 168, 0.65);
+          background: rgba(250, 117, 168, 0.035);
+          box-shadow: 0 0 0 3px rgba(250, 117, 168, 0.08);
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+          -webkit-box-shadow: 0 0 0 30px #181820 inset !important;
+          -webkit-text-fill-color: #fff !important;
+        }
+      }
+
+      textarea.form_control {
+        min-height: 8.5rem;
+        resize: vertical;
+      }
+
+      :global(.btn) {
+        min-height: 3.35rem;
+        margin-top: 0.4rem;
+      }
+    }
+  }
+}
+
+.success_message {
+  padding: 1.2rem;
+  margin: 0;
+  border: 1px solid rgba(100, 245, 175, 0.2);
+  border-radius: 12px;
+  color: #b8ffd9;
+  background: rgba(100, 245, 175, 0.06);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.error_message {
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 107, 130, 0.24);
+  border-radius: 10px;
+  color: #ff9aad;
+  background: rgba(255, 107, 130, 0.06);
+  font-size: 0.85rem;
+}
+
+.submitting_overlay {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.submitting_spinner {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

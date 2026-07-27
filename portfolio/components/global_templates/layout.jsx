@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 
 const Layout = ({ children }) => (
   <motion.div
-    initial={{ x: 300, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    exit={{ x: 300, opacity: 0 }}
+    id="top"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
     transition={{
-      type: "spring",
-      stiffness: 100,
-      damping: 20
+      duration: 0.35,
+      ease: [0.16, 1, 0.3, 1]
     }}
   >
     {children}

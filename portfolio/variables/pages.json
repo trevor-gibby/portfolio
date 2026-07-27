@@ -1,6 +1,6 @@
 [
   {
-    "title": "My Work",
+    "title": "Work",
     "slug": "/#my-work",
     "img": "/images/my-work.png",
     "alt": "My Work",
@@ -16,7 +16,7 @@
     "showInSubNav": true
   },
   {
-    "title": "About Me",
+    "title": "About",
     "slug": "/#about",
     "img": "/images/about.jpg",
     "alt": "About Me",
@@ -24,8 +24,8 @@
     "showInSubNav": true
   },
   {
-    "title": "Contact Me",
-    "slug": "/contact",
+    "title": "Contact",
+    "slug": "/#contact",
     "img": "/images/contact.jpg",
     "alt": "Contact Me",
     "showInMainNav": false,

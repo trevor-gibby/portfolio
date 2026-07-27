@@ -1,70 +1,39 @@
 import Main from '@/components/main_templates/main'
 import BlogCard from '@/components/dynamic_content_widgets/blog-card/blog-card'
-import CTA from '@/components/content_widgets/cta/cta'
-import ContactModal, { showModal } from '@/components/content_widgets/contact-modal/contact-modal'
-
+import ContactModal from '@/components/content_widgets/contact-modal/contact-modal'
 import blogPostsData from '@/variables/blog-posts.json'
-const blogPosts = blogPostsData.posts
+import styles from './index.module.scss'
 
-export default function Blog({ siteVariables, session }) {
-  // Filter to only published posts and sort by date (newest first)
-  const publishedPosts = blogPosts
-    .filter(post => post.published)
+export default function Blog({ session }) {
+  const publishedPosts = blogPostsData.posts
+    .filter((post) => post.published)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   return (
     <Main
-      meta_title="Blog - Trevor Gibby"
-      meta_description="Thoughts on web development, technology, and my journey as a full stack developer."
+      meta_title="Writing — Trevor Gibby"
+      meta_description="Thoughts on software engineering, technical leadership, product development, and building better systems."
     >
-      {/* Hero */}
-      <section className="bg-primary text-tertiary">
+      <section className={styles.hero}>
         <div className="container">
-          <div className="row">
-            <div className="col-12 text-center py-4">
-              <h1 className="h1 mb-3">Blog</h1>
-              <p className="lead mb-0">Thoughts on software engineering, management, technology, and more.</p>
-            </div>
+          <p>Field notes · Engineering &amp; leadership</p>
+          <h1>Notes from the <span>workbench.</span></h1>
+          <div className={styles.heroBottom}>
+            <p>Ideas, lessons, and useful details collected while building software and leading teams.</p>
+            <span>{publishedPosts.length.toString().padStart(2, '0')} published notes</span>
           </div>
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
-      <section>
+      <section className={styles.posts}>
         <div className="container">
           {publishedPosts.length > 0 ? (
-            <div className="row">
-              {publishedPosts.map((post, index) => (
-                <div key={index} className="col-lg-4 col-md-6 mb-4">
-                  <BlogCard post={post} />
-                </div>
-              ))}
+            <div className={styles.grid}>
+              {publishedPosts.map((post) => <BlogCard key={post.slug} post={post} />)}
             </div>
           ) : (
-            <div className="row">
-              <div className="col-12 text-center py-5">
-                <p className="lead">No posts yet. Check back soon!</p>
-              </div>
-            </div>
+            <p className={styles.empty}>No notes yet. Check back soon.</p>
           )}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="pt-0">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <CTA
-                color="primary"
-                textColor="tertiary"
-                title="Want to work together?"
-                subtitle="Let's connect and discuss your next project!"
-                button1={{ text: 'Contact Me', color: 'outline-tertiary', onClick: showModal }}
-                logoColor="tertiary"
-              />
-            </div>
-          </div>
         </div>
       </section>
 

@@ -32,7 +32,7 @@ export default function BlogCard({ post }) {
           </div>
           <h3 className={styles.title}>{post.title}</h3>
           <p className={styles.excerpt}>{post.excerpt}</p>
-          <span className={styles.read_more}>Read More →</span>
+          <span className={styles.read_more}>Read article <span aria-hidden="true">→</span></span>
         </div>
       </article>
     </Link>

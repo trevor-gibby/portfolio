@@ -1,38 +1,29 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
+import Link from 'next/link'
+
 import Main from '@/components/main_templates/main'
-import CTA from '@/components/content_widgets/cta/cta'
-import HeroWithTile from '@/components/dynamic_content_widgets/hero-with-tile/hero-with-tile'
 import ContactModal, { showModal } from '@/components/content_widgets/contact-modal/contact-modal'
-
 import blogPostsData from '@/variables/blog-posts.json'
-const blogPosts = blogPostsData.posts
-
 import styles from './[slug].module.scss'
+
+const blogPosts = blogPostsData.posts
 
 export async function getStaticPaths() {
   const paths = blogPosts
-    .filter(post => post.published)
-    .map(post => ({
-      params: { slug: post.slug }
-    }))
+    .filter((post) => post.published)
+    .map((post) => ({ params: { slug: post.slug } }))
 
   return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
-  const post = blogPosts.find(p => p.slug === params.slug)
+  const post = blogPosts.find((item) => item.slug === params.slug)
+  if (!post || !post.published) return { notFound: true }
 
-  if (!post || !post.published) {
-    return { notFound: true }
-  }
-
-  // Load content from HTML file
   const contentPath = path.join(process.cwd(), 'variables', 'blog-posts', `${params.slug}.html`)
   let content = ''
-  
+
   try {
     content = fs.readFileSync(contentPath, 'utf8')
   } catch (error) {
@@ -42,21 +33,16 @@ export async function getStaticProps({ params }) {
   return { props: { post: { ...post, content } } }
 }
 
-export default function BlogPost({ post, siteVariables, session }) {
+export default function BlogPost({ post, session }) {
   const siteUrl = 'https://trevorgibby.dev'
   const postUrl = `${siteUrl}/blog/${post.slug}`
   const imageUrl = post.image ? `${siteUrl}${post.image}` : null
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
-  }
-
-  // JSON-LD Schema for BlogPosting
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -79,97 +65,76 @@ export default function BlogPost({ post, siteVariables, session }) {
       '@type': 'WebPage',
       '@id': postUrl
     },
-    keywords: post.tags ? post.tags.join(', ') : undefined
+    keywords: post.tags?.join(', ')
   }
 
   return (
     <Main
-      meta_title={`${post.title} - Trevor Gibby`}
+      meta_title={`${post.title} — Trevor Gibby`}
       meta_description={post.excerpt}
       meta_image={imageUrl}
       meta_url={postUrl}
       meta_type="article"
-      article={{
-        publishedTime: post.date,
-        author: post.author || 'Trevor Gibby',
-        tags: post.tags
-      }}
+      article={{ publishedTime: post.date, author: post.author || 'Trevor Gibby', tags: post.tags }}
       schema={schema}
     >
-      {/* Hero */}
-      <HeroWithTile
-        bgColor="primary"
-        tileColor="rgba(255, 255, 255, 0.7)"
-        tileTextColor="primary"
-        image={post.image}
-        imageAlt={post.title}
-      >
-        <Link href="/blog" className="text-primary mb-3 d-inline-block">
-          ← Back to Blog
-        </Link>
-        <h1 className="h1 mb-3">{post.title}</h1>
-        <div className={styles.meta}>
-          <span>{formatDate(post.date)}</span>
-          {post.author && <span>by {post.author}</span>}
-        </div>
-        {post.tags && post.tags.length > 0 && (
-          <div className={styles.tags}>
-            {post.tags.map((tag, index) => (
-              <span key={index} className={styles.tag}>{tag}</span>
-            ))}
-          </div>
-        )}
-      </HeroWithTile>
-
-      {/* Post Content */}
-      <section>
+      <header className={styles.hero}>
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <article 
-                className={styles.content}
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
+          <Link href="/blog" className={styles.back}>← All writing</Link>
+          <div className={styles.meta}>
+            <span>{formattedDate}</span>
+            <span>{post.author || 'Trevor Gibby'}</span>
+          </div>
+          <h1>{post.title}</h1>
+          <p>{post.excerpt}</p>
+          {post.tags?.length > 0 && (
+            <div className={styles.tags}>
+              {post.tags.map((tag) => <span key={tag}>{tag}</span>)}
+            </div>
+          )}
+        </div>
+      </header>
 
-              {/* Sources */}
-              {post.sources && post.sources.length > 0 && (
+      {post.image && (
+        <div className={`container ${styles.featuredImage}`}>
+          <img src={post.image} alt={post.title} />
+        </div>
+      )}
+
+      <section className={styles.articleSection}>
+        <div className="container">
+          <div className={styles.articleGrid}>
+            <aside>
+              <span>Published</span>
+              <strong>{formattedDate}</strong>
+              <span>Written by</span>
+              <strong>{post.author || 'Trevor Gibby'}</strong>
+            </aside>
+            <div>
+              <article className={styles.content} dangerouslySetInnerHTML={{ __html: post.content }} />
+
+              {post.sources?.length > 0 && (
                 <div className={styles.sources}>
-                  <h3>Sources</h3>
+                  <h2>Sources</h2>
                   <ol>
-                    {post.sources.map((source, index) => (
-                      <li key={index}>
+                    {post.sources.map((source) => (
+                      <li key={source.title}>
                         {source.url ? (
-                          <a href={source.url} target="_blank" rel="noopener noreferrer">
-                            {source.title}
-                          </a>
-                        ) : (
-                          <span>{source.title}</span>
-                        )}
-                        {source.author && <span className={styles.source_author}> — {source.author}</span>}
-                        {source.date && <span className={styles.source_date}> ({source.date})</span>}
+                          <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>
+                        ) : source.title}
+                        {source.author && <span> — {source.author}</span>}
+                        {source.date && <span> ({source.date})</span>}
                       </li>
                     ))}
                   </ol>
                 </div>
               )}
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="pt-0">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <CTA
-                color="primary"
-                textColor="tertiary"
-                title="Enjoyed this post?"
-                subtitle="Let's connect!"
-                button1={{ text: 'Contact Me', color: 'outline-tertiary', onClick: showModal }}
-                logoColor="tertiary"
-              />
+              <div className={styles.postCta}>
+                <p>Have a thought to add?</p>
+                <h2>Let&apos;s continue the conversation.</h2>
+                <button type="button" className="btn btn-primary" onClick={showModal}>Get in touch ↗</button>
+              </div>
             </div>
           </div>
         </div>

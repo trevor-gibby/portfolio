@@ -1,53 +1,39 @@
-
-import Image from 'next/image'
 import Link from 'next/link'
 
-import defaultPages from '@/variables/pages.json';
+import defaultPages from '@/variables/pages.json'
+import styles from './footer.module.scss'
 
-export default function Footer({
-  pages = defaultPages
-}) {
-
-  const currentYear = new Date().getFullYear();
+export default function Footer({ pages = defaultPages }) {
+  const currentYear = new Date().getFullYear()
+  const socialPages = pages.filter((page) => page.showInTertiaryNav && page.openInNewTab)
 
   return (
-    <>
-      <footer>
-        <section className="bg-dark">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-7 col-md-5">
-                <Link href="/">
-                  <img className="img-fluid" alt="Trevor Gibby Full Stack Developer" src="/logos/trevor-gibby-logo.tertiary.svg" />
-                </Link>
-              </div>
-            </div>
-            <div className="row mt-lg-5 mt-3">
-              <div className="col-12">
-                <hr className="tertiary thin" />
-                <div className="row justify-content-center">
-                  {pages.map((page, index) => (
-                    (page.showInMainNav) &&
-                    <div key={index} className="col-12 col-md-4 col-lg-3 text-center">
-                      <Link href={page.slug} className="text-tertiary hover-secondary">{page.title}</Link>
-                    </div>
-                  ))}
-                </div>
-                <hr className="tertiary thin" />
-              </div>
-            </div>
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.top}>
+          <Link href="/" className={styles.brand}>
+            <img src="/logos/insignia-2.png" alt="" aria-hidden="true" />
+            <span>
+              <strong>Trevor Gibby</strong>
+              <small>Full Stack Engineer &amp; Team Lead</small>
+            </span>
+          </Link>
+          <p>Thoughtful systems. Polished experiences.<br />Teams built to deliver.</p>
+        </div>
+
+        <div className={styles.bottom}>
+          <span>© {currentYear} Trevor Gibby</span>
+          <div className={styles.links}>
+            {socialPages.map((page) => (
+              <a key={page.slug} href={page.slug} target="_blank" rel="noopener noreferrer">
+                {page.title} <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+            <Link href="/blog">Writing</Link>
           </div>
-        </section>
-        <section className="py-3 bg-dark text-tertiary" style={{borderTop: '1px solid rgb(var(--tertiary-rgb-format) / 0.2)'}}>
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <p className="text-center mb-0" style={{fontSize: '75%', letterSpacing: '0.05rem'}}>© {currentYear} Trevor Gibby | All Rights Reserved</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </footer>
-    </>
+          <a href="#top" className={styles.backTop}>Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
   )
 }

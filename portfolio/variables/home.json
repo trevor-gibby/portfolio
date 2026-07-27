@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "eyebrow": "Full Stack Engineer · Team Lead",
+    "title": "I build digital systems that move teams forward.",
+    "intro": "From polished interfaces to resilient back-end platforms, I turn complex product ideas into fast, thoughtful experiences — and help engineering teams do their best work along the way.",
+    "primaryCta": "Explore my work",
+    "secondaryCta": "Start a conversation"
+  },
+  "stats": [
+    {
+      "value": "5+",
+      "label": "Years engineering"
+    },
+    {
+      "value": "15+",
+      "label": "Client sites launched"
+    },
+    {
+      "value": "2+",
+      "label": "Years leading teams"
+    }
+  ],
+  "about": {
+    "eyebrow": "Engineer, lead, systems thinker",
+    "title": "Good software starts with clarity.",
+    "lead": "I’m a full stack engineer who likes hard problems, clean interfaces, and teams that care about the craft.",
+    "body": [
+      "Over five years at Ninthroot, I’ve led the development of consumer-facing web experiences across distinct brands while contributing to the systems behind them — from a PHP-based framework and CMS to purpose-built internal platforms.",
+      "I work comfortably across the stack, but my strongest contribution is connecting the layers: product goals, user experience, system architecture, delivery practices, and the people doing the work.",
+      "I earned my B.S. in Computer Science from Utah Valley University with Summa Cum Laude honors. Curiosity still drives how I work: learn the system, ask better questions, and leave things stronger than I found them."
+    ]
+  },
+  "principles": [
+    {
+      "number": "01",
+      "title": "Make complexity feel simple",
+      "description": "Thoughtful architecture underneath, calm and intuitive experiences on the surface."
+    },
+    {
+      "number": "02",
+      "title": "Build for the next change",
+      "description": "Flexible systems, clear boundaries, and documentation that make future work easier."
+    },
+    {
+      "number": "03",
+      "title": "Raise the whole team",
+      "description": "Practical mentorship, candid feedback, and processes that create momentum without friction."
+    }
+  ],
+  "contact": {
+    "eyebrow": "Have a hard problem?",
+    "title": "Let’s build something with staying power.",
+    "description": "I’m always interested in ambitious products, thoughtful teams, and engineering challenges where the details matter."
+  }
+}

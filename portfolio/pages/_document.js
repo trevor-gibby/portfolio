@@ -4,18 +4,14 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-      <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
-        crossOrigin="anonymous" 
-        referrerPolicy="no-referrer" 
-      />
-
-      {/* Fancybox */}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
-
-      <link rel="shortcut icon" href="/logos/tg-logo-alt.primary.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@700;800&family=Space+Grotesk:wght@500&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="shortcut icon" href="/logos/insignia-1.png" />
+        <meta name="theme-color" content="#090A11" />
       </Head>
       <body>
         <Main />

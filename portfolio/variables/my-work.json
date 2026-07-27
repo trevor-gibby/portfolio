@@ -1,45 +1,71 @@
 [
   {
     "title": "Canopy",
+    "eyebrow": "Product engineering · Ninthroot",
     "highlight": true,
-    "short_description": "",
-    "long_description": "Canopy is a B2B client management system that has been optimized for franchise-style clients. It allows for seemless management of brands at the company or location-specific level. It features secure Oauth login, user management, update history, several searching/filtering options using an intuitive UI, and a robust API for integration with other systems. It is built using Next.js, Prisma managing a MySQL database, a Redis layer for caching data, and Bootstrap for styling.",
-    "image": "/images/mywork/canopy/canopy1.png",
-    "image_alt": "Canopy x Ninthroot",
+    "short_description": "A multi-tenant command center for franchise-scale client operations.",
+    "long_description": "Canopy gives teams a clear way to manage brands at both company and location level. I helped shape the system end to end: secure OAuth access, role-aware user management, audit history, high-speed search and filtering, and a robust integration API.",
+    "image": "/images/mywork/canopy/canopy-1.png",
+    "image_alt": "Canopy client management dashboard",
     "link": "",
-
+    "link_label": "Private client platform",
+    "accent": "#FA75A8",
+    "technologies": ["Next.js", "Prisma", "MySQL", "Redis", "OAuth"],
     "gallery": [
       {
-        "image": "",
-        "image_alt": "",
-        "caption": ""
+        "image": "/images/mywork/canopy/canopy-2.png",
+        "image_alt": "Canopy brand management interface",
+        "caption": "Multi-brand management"
+      },
+      {
+        "image": "/images/mywork/canopy/canopy-3.png",
+        "image_alt": "Canopy location dashboard",
+        "caption": "Location-level control"
+      },
+      {
+        "image": "/images/mywork/canopy/canopy-4.png",
+        "image_alt": "Canopy user interface",
+        "caption": "Purpose-built workflows"
+      }
+    ]
+  },
+  {
+    "title": "Redis Integration",
+    "eyebrow": "Performance engineering · Ninthroot",
+    "highlight": true,
+    "short_description": "A production caching layer that turns expensive page builds into fast, observable responses.",
+    "long_description": "I designed and integrated a Redis caching system for a large network of multi-location marketing sites. It dramatically reduced repeat page-build times while adding clear cache-hit logging, performance metrics, and operational visibility for the engineering team.",
+    "image": "/images/mywork/redis-integration/redis-integration1.png",
+    "image_alt": "Redis database performance and latency metrics",
+    "link": "",
+    "link_label": "Private infrastructure project",
+    "accent": "#FF6B7A",
+    "technologies": ["Redis", "PHP", "Cache Design", "Observability", "Performance"],
+    "gallery": [
+      {
+        "image": "/images/mywork/redis-integration/redis-integration2.png",
+        "image_alt": "Application cache-hit performance logs",
+        "caption": "Cache performance logging"
+      },
+      {
+        "image": "/images/mywork/redis-integration/redis-integration3.png",
+        "image_alt": "RedisInsight key browser",
+        "caption": "Operational visibility"
       }
     ]
   },
   {
     "title": "UVU Feud",
+    "eyebrow": "Real-time game platform",
     "highlight": true,
-    "short_description": "",
-    "long_description": "UVU Feud is a Jackbox-style game that allows players to answer questions in a family feud style format. It features different UIs for players, the host, and the gameboard each with unique functionality. It utilizes Socket.io for real-time communication between the host and players, and a Node.js backend to manage game state. The game is built using Vue for the frontend and Express.js for the backend with a MongoDB database. It is integrated with a Family Feud API to provide real questions and answers.",
+    "short_description": "A Jackbox-style multiplayer game with distinct player, host, and gameboard experiences.",
+    "long_description": "UVU Feud turns the familiar Family Feud format into a synchronized, multi-screen web game. Socket.io keeps every participant in sync while the Node.js service manages rounds, responses, scoring, and game state.",
     "image": "/images/mywork/uvu-feud/uvu-feud10.png",
-    "image_alt": "UVU Feud",
+    "image_alt": "UVU Feud multiplayer game board",
     "link": "https://github.com/trevor-gibby/UVU-Feud",
-
-    "gallery": [
-
-    ]
-  },
-  {
-    "title": "Slide Puzzle",
-    "highlight": true,
-    "short_description": "",
-    "long_description": "This is a simple slide puzzle game that allows users to select from a variety of images to play with and sizes ranging from 3x3 to 5x5. It features a timer and a move counter to track progress. It is an entirely frontend application built using vanilla JavaScript, HTML, and CSS.",
-    "image": "/images/mywork/slide-puzzle/slide-puzzle.png",
-    "image_alt": "Slide Puzzle",
-    "link": "https://github.com/trevor-gibby/sliding-puzzle",
-
-    "gallery": [
-
-    ]
+    "link_label": "View on GitHub",
+    "accent": "#B989FF",
+    "technologies": ["Vue", "Node.js", "Socket.io", "Express", "MongoDB"],
+    "gallery": []
   }
 ]
