@@ -1,4 +1,5 @@
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
+import { useEffect } from 'react'
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
 import Link from 'next/link'
 
 import ContactModal, { showModal } from '@/components/content_widgets/contact-modal/contact-modal'
@@ -26,6 +27,59 @@ const recentPosts = blogPostsData.posts
   .sort((a, b) => new Date(b.date) - new Date(a.date))
   .slice(0, 3)
 
+function useDocumentScrollProgress() {
+  const scrollProgress = useMotionValue(0)
+
+  useEffect(() => {
+    let animationFrame = null
+    let isActive = true
+
+    const updateProgress = () => {
+      animationFrame = null
+
+      const documentHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      )
+      const scrollableHeight = Math.max(documentHeight - window.innerHeight, 1)
+      const nextProgress = Math.min(Math.max(window.scrollY / scrollableHeight, 0), 1)
+
+      scrollProgress.set(nextProgress)
+    }
+
+    const scheduleUpdate = () => {
+      if (isActive && animationFrame === null) {
+        animationFrame = window.requestAnimationFrame(updateProgress)
+      }
+    }
+
+    const resizeObserver = new ResizeObserver(scheduleUpdate)
+    resizeObserver.observe(document.documentElement)
+    resizeObserver.observe(document.body)
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate, { passive: true })
+    window.addEventListener('load', scheduleUpdate)
+    window.visualViewport?.addEventListener('resize', scheduleUpdate)
+    document.fonts?.ready.then(scheduleUpdate)
+    scheduleUpdate()
+
+    return () => {
+      isActive = false
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame)
+      }
+      resizeObserver.disconnect()
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      window.removeEventListener('load', scheduleUpdate)
+      window.visualViewport?.removeEventListener('resize', scheduleUpdate)
+    }
+  }, [scrollProgress])
+
+  return scrollProgress
+}
+
 function SectionLabel({ index, children }) {
   return (
     <div className={styles.sectionLabel}>
@@ -38,7 +92,7 @@ function SectionLabel({ index, children }) {
 
 export default function Home({ siteVariables, session }) {
   const reduceMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll()
+  const scrollYProgress = useDocumentScrollProgress()
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24, restDelta: 0.001 })
   const allSkills = skillGroups.flatMap((group) =>
     group.subSkills.flatMap((skill) => [skill.name, ...(skill.subSkills?.map((item) => item.name) || [])])
@@ -174,13 +228,7 @@ export default function Home({ siteVariables, session }) {
         <div className="container">
           <SectionLabel index="01">About</SectionLabel>
           <div className={styles.aboutGrid}>
-            <motion.div
-              className={styles.portraitColumn}
-              initial={reduceMotion ? false : { opacity: 0, x: -45 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-12%' }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
+            <div className={styles.portraitColumn}>
               <div className={styles.portrait}>
                 <img src="/headshots/headshot1-2.jpeg" alt="Trevor Gibby" loading="lazy" />
                 <div className={styles.portraitTag}>
@@ -192,31 +240,24 @@ export default function Home({ siteVariables, session }) {
                 <span aria-hidden="true">✦</span>
                 <p>Building at the intersection of product, people, and technology.</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className={styles.aboutCopy}
-              initial={reduceMotion ? false : 'hidden'}
-              whileInView="visible"
-              viewport={{ once: true, margin: '-12%' }}
-              variants={{ visible: { transition: { staggerChildren: 0.11 } } }}
-            >
-              <motion.p variants={reveal} className={styles.eyebrow}>{content.about.eyebrow}</motion.p>
-              <motion.h2 variants={reveal}>{content.about.title}</motion.h2>
-              <motion.p variants={reveal} className={styles.aboutLead}>{content.about.lead}</motion.p>
+            <div className={styles.aboutCopy}>
+              <p className={styles.eyebrow}>{content.about.eyebrow}</p>
+              <h2>{content.about.title}</h2>
+              <p className={styles.aboutLead}>{content.about.lead}</p>
               {content.about.body.map((paragraph) => (
-                <motion.p variants={reveal} key={paragraph}>{paragraph}</motion.p>
+                <p key={paragraph}>{paragraph}</p>
               ))}
-              <motion.a
-                variants={reveal}
+              <a
                 href={siteVariables.resume}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.textLink}
               >
                 Read my résumé <span aria-hidden="true">↗</span>
-              </motion.a>
-            </motion.div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -251,13 +292,9 @@ export default function Home({ siteVariables, session }) {
 
           <div className={styles.skillGrid}>
             {skillGroups.map((group, index) => (
-              <motion.article
+              <article
                 key={group.name}
                 className={styles.skillCard}
-                initial={reduceMotion ? false : { opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-8%' }}
-                transition={{ duration: 0.6, delay: (index % 3) * 0.08 }}
               >
                 <span className={styles.skillIndex}>0{index + 1}</span>
                 <h3>{group.name}</h3>
@@ -266,7 +303,7 @@ export default function Home({ siteVariables, session }) {
                     <span key={skill.name}>{skill.name}</span>
                   ))}
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
 
@@ -277,19 +314,13 @@ export default function Home({ siteVariables, session }) {
             </div>
             <div className={styles.principleList}>
               {content.principles.map((principle) => (
-                <motion.article
-                  key={principle.number}
-                  initial={reduceMotion ? false : { opacity: 0, x: 35 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
+                <article key={principle.number}>
                   <span>{principle.number}</span>
                   <div>
                     <h3>{principle.title}</h3>
                     <p>{principle.description}</p>
                   </div>
-                </motion.article>
+                </article>
               ))}
             </div>
           </div>
@@ -315,13 +346,7 @@ export default function Home({ siteVariables, session }) {
 
       <section id="contact" className={styles.contact}>
         <div className="container">
-          <motion.div
-            className={styles.contactCard}
-            initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-10%' }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className={styles.contactCard}>
             <div className={styles.contactCircuit} aria-hidden="true" />
             <p className={styles.eyebrow}>{content.contact.eyebrow}</p>
             <h2>{content.contact.title}</h2>
@@ -332,7 +357,7 @@ export default function Home({ siteVariables, session }) {
               </button>
               <a href={`mailto:${siteVariables.email}`} className={styles.emailLink}>{siteVariables.email}</a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

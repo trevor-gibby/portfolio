@@ -1,8 +1,6 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import styles from './project-showcase.module.scss'
 
 export default function ProjectShowcase({ project, index }) {
-  const reduceMotion = useReducedMotion()
   const isFeatured = index === 0
 
   const handlePointerMove = (event) => {
@@ -12,13 +10,9 @@ export default function ProjectShowcase({ project, index }) {
   }
 
   return (
-    <motion.article
+    <article
       className={`${styles.project} ${isFeatured ? styles.featured : ''}`}
       style={{ '--project-accent': project.accent }}
-      initial={reduceMotion ? false : { opacity: 0, y: 70 }}
-      whileInView={reduceMotion ? {} : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-10%' }}
-      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       onPointerMove={handlePointerMove}
     >
       <div className={styles.glow} aria-hidden="true" />
@@ -64,17 +58,11 @@ export default function ProjectShowcase({ project, index }) {
         </div>
 
         {isFeatured && project.gallery?.length > 0 && (
-          <motion.div
-            className={styles.galleryPeek}
-            initial={reduceMotion ? false : { opacity: 0, x: 40, rotate: 0 }}
-            whileInView={reduceMotion ? {} : { opacity: 1, x: 0, rotate: 2.5 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.35, duration: 0.7 }}
-          >
+          <div className={styles.galleryPeek}>
             <img src={project.gallery[0].image} alt={project.gallery[0].image_alt} loading="lazy" />
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.article>
+    </article>
   )
 }
