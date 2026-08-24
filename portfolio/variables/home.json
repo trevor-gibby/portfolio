@@ -1,55 +1,108 @@
 {
   "hero": {
-    "eyebrow": "Full Stack Engineer · Team Lead",
-    "title": "I build digital systems that move teams forward.",
-    "intro": "From polished interfaces to resilient back-end platforms, I turn complex product ideas into fast, thoughtful experiences — and help engineering teams do their best work along the way.",
-    "primaryCta": "Explore my work",
-    "secondaryCta": "Start a conversation"
+    "eyebrow": "Senior Full-Stack Engineer · Technical Lead",
+    "title": "Senior Full-Stack Engineer & Hands-On Technical Lead",
+    "intro": "I build and modernize full-stack systems across product, platform, integrations, and infrastructure while helping small engineering teams deliver better work.",
+    "primaryCta": "Explore My Work",
+    "secondaryCta": "Contact Me"
   },
   "stats": [
     {
-      "value": "5+",
-      "label": "Years engineering"
+      "value": "≈50%",
+      "label": "less new-site implementation time"
     },
     {
-      "value": "15+",
-      "label": "Client sites launched"
+      "value": "2×",
+      "label": "0→1 prototype iterations"
     },
     {
-      "value": "2+",
-      "label": "Years leading teams"
+      "value": "AWS",
+      "label": "cost-conscious continuity system"
     }
   ],
-  "about": {
-    "eyebrow": "Engineer, lead, systems thinker",
-    "title": "Good software starts with clarity.",
-    "lead": "I’m a full stack engineer who likes hard problems, clean interfaces, and teams that care about the craft.",
-    "body": [
-      "Over five years at Ninthroot, I’ve led the development of consumer-facing web experiences across distinct brands while contributing to the systems behind them — from a PHP-based framework and CMS to purpose-built internal platforms.",
-      "I work comfortably across the stack, but my strongest contribution is connecting the layers: product goals, user experience, system architecture, delivery practices, and the people doing the work.",
-      "I earned my B.S. in Computer Science from Utah Valley University with Summa Cum Laude honors. Curiosity still drives how I work: learn the system, ask better questions, and leave things stronger than I found them."
-    ]
-  },
   "principles": [
     {
       "number": "01",
-      "title": "Make complexity feel simple",
-      "description": "Thoughtful architecture underneath, calm and intuitive experiences on the surface."
+      "title": "Pragmatic modernization",
+      "description": "I improve established systems without treating a rewrite as the automatic answer.",
+      "proof": "Oak CMS: PHP 7.3 → 8.4, standardized controllers, and structured data."
     },
     {
       "number": "02",
-      "title": "Build for the next change",
-      "description": "Flexible systems, clear boundaries, and documentation that make future work easier."
+      "title": "Reusable product thinking",
+      "description": "I turn repeated workarounds into capabilities the whole team can understand and reuse.",
+      "proof": "Oak Component Engine: approximately 50% less implementation time for new sites."
     },
     {
       "number": "03",
-      "title": "Raise the whole team",
-      "description": "Practical mentorship, candid feedback, and processes that create momentum without friction."
+      "title": "Hands-on leadership",
+      "description": "I improve planning, tooling, debugging, review, and mentoring while continuing to contribute technically.",
+      "proof": "Engineering Team Lead responsible for delivery practices and developer growth."
+    },
+    {
+      "number": "04",
+      "title": "Business-aware engineering",
+      "description": "I weigh delivery speed, operating cost, risk, and maintainability before choosing an architecture.",
+      "proof": "Chestnut: emergency continuity for a few dollars per month instead of a full replica."
+    }
+  ],
+  "about": {
+    "eyebrow": "Engineer, lead, systems owner",
+    "title": "I take responsibility for the system around the feature.",
+    "lead": "I’m a senior full-stack engineer and Engineering Team Lead who works across product decisions, interfaces, back-end architecture, infrastructure, and delivery.",
+    "body": [
+      "At Ninthroot, I progressed from student developer to Engineering Team Lead. My work has expanded from shipping web experiences to owning the capabilities behind them: a PHP framework and CMS, integrations, deployment workflows, business-continuity systems, and the engineering practices a small team relies on.",
+      "I’m most useful when a problem crosses boundaries. I can trace an issue from the user experience through application code, data, infrastructure, and team process, then choose a practical improvement that fits the business.",
+      "Outside that production work, I’m rebuilding an operations-platform concept with Next.js, TypeScript, Prisma, and PostgreSQL to keep sharpening my 0→1 product and architecture skills.",
+      "I earned a B.S. in Computer Science from Utah Valley University with Summa Cum Laude honors."
+    ]
+  },
+  "impact": [
+    {
+      "title": "Platform ownership",
+      "description": "I work across the CMS, integrations, infrastructure, delivery tooling, and new internal capabilities instead of treating each layer as someone else’s problem."
+    },
+    {
+      "title": "Team delivery",
+      "description": "I introduced sprint planning and practical agile routines, trained developers on debugging and AI-assisted workflows, and improved code-review habits."
+    },
+    {
+      "title": "Technical judgment",
+      "description": "I have shipped reusable systems, built proofs of concept, and recommended against deployment when operating cost or build-versus-buy tradeoffs did not hold up."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Full-Stack Development",
+      "description": "Product interfaces, application logic, APIs, data models, integrations, and delivery.",
+      "technologies": ["TypeScript", "React", "Next.js", "Node.js", "PHP"]
+    },
+    {
+      "name": "Software Architecture",
+      "description": "Reusable capabilities, relational models, access boundaries, and incremental modernization.",
+      "technologies": ["PostgreSQL", "MySQL", "Prisma", "REST APIs", "System Design"]
+    },
+    {
+      "name": "Technical Leadership",
+      "description": "Planning, mentoring, code review, documentation, debugging, and delivery practices.",
+      "technologies": ["Sprint Planning", "Mentoring", "Developer Tooling", "AI-Assisted Development"]
+    },
+    {
+      "name": "TypeScript & JavaScript",
+      "description": "Modern TypeScript product work alongside deep JavaScript experience across front-end and Node.js systems.",
+      "technologies": ["TypeScript", "JavaScript", "React", "Vue", "Express"]
+    },
+    {
+      "name": "Amazon Web Services",
+      "description": "Cost-aware application and operational infrastructure built from focused managed services.",
+      "technologies": ["Lambda", "Step Functions", "EventBridge", "SNS", "S3", "EC2"]
     }
   ],
   "contact": {
-    "eyebrow": "Have a hard problem?",
-    "title": "Let’s build something with staying power.",
-    "description": "I’m always interested in ambitious products, thoughtful teams, and engineering challenges where the details matter."
+    "eyebrow": "What I’m looking for",
+    "title": "Ready for the next meaningful system.",
+    "description": "I’m exploring senior full-stack and hands-on technical leadership opportunities where I can help build or modernize meaningful products.",
+    "resumeCta": "View Résumé",
+    "contactCta": "Contact Me"
   }
 }

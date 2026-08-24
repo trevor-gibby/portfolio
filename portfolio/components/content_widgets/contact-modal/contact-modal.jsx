@@ -19,9 +19,9 @@ const ContactModal = ({messageSent}) => {
   };
 
   return (
-    <Modal show={show} onHide={hideModal} className={styles.modal}>
+    <Modal show={show} onHide={hideModal} className={styles.modal} aria-labelledby="contact-modal-title">
       <Modal.Header closeButton>
-        <Modal.Title>Contact Me</Modal.Title>
+        <Modal.Title id="contact-modal-title">Contact Me</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ContactForm messageSent={messageSent} />

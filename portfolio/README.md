@@ -1,6 +1,6 @@
 # Trevor Gibby - Portfolio
 
-Personal portfolio website showcasing my work as a Full Stack Web Developer.
+Personal portfolio website showcasing my work as a senior full-stack engineer and hands-on technical lead.
 
 **Live Site:** [trevorgibby.dev](https://trevorgibby.dev)
 

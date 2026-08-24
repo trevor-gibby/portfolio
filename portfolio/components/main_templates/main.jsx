@@ -10,7 +10,7 @@ export default function Main({
   children, 
   meta_title, 
   meta_description,
-  meta_image = 'https://trevorgibby.dev/og.png',
+  meta_image = 'https://trevorgibby.dev/og-senior.png',
   meta_url = 'https://trevorgibby.dev',
   meta_type = 'website',
   article,
@@ -25,6 +25,7 @@ export default function Main({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="Trevor Gibby" />
         <meta name="theme-color" content="#090A11" />
+        {meta_url && <link rel="canonical" href={meta_url} />}
         
         {/* Open Graph */}
         <meta property="og:title" content={meta_title} />
@@ -32,14 +33,11 @@ export default function Main({
         <meta property="og:type" content={meta_type} />
         {meta_url && <meta property="og:url" content={meta_url} />}
         {meta_image && <meta property="og:image" content={meta_image} />}
+        {meta_image && <meta property="og:image:width" content="1200" />}
+        {meta_image && <meta property="og:image:height" content="630" />}
+        {meta_image && <meta property="og:image:alt" content="Trevor Gibby, Senior Full-Stack Engineer and Technical Lead" />}
         <meta property="og:site_name" content="Trevor Gibby" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content={meta_image ? 'summary_large_image' : 'summary'} />
-        <meta name="twitter:title" content={meta_title} />
-        <meta name="twitter:description" content={meta_description} />
-        <meta name="twitter:creator" content="@trevorgibby" />
-        {meta_image && <meta name="twitter:image" content={meta_image} />}
+        <meta property="og:locale" content="en_US" />
         
         {/* Article specific meta */}
         {article && (
@@ -63,9 +61,10 @@ export default function Main({
       </Head>
 
       <Layout>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
 
-        <main>
+        <main id="main-content">
           {children}
         </main>
 

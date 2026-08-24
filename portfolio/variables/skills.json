@@ -19,6 +19,9 @@
         "badge": "/images/badges/javascript.svg"
       },
       {
+        "name": "TypeScript"
+      },
+      {
         "name": "jQuery",
         "badge": "/images/badges/jquery.svg"
       },
@@ -70,6 +73,9 @@
       {
         "name": "MySQL",
         "badge": "/images/badges/mysql.svg"
+      },
+      {
+        "name": "PostgreSQL"
       },
       {
         "name": "MongoDB",

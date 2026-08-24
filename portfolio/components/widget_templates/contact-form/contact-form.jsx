@@ -3,6 +3,7 @@ import styles from './contact-form.module.scss';
 import { Form, Button } from 'react-bootstrap';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { track } from '@vercel/analytics/react';
 
 export default function ContactForm({ messageSent }) {
 
@@ -65,7 +66,7 @@ export default function ContactForm({ messageSent }) {
           {isSubmitting && <div className={styles.submitting_spinner}></div>}
           <p>
             Feel free to reach out to me at{' '}
-            <a target="_blank" rel="nofollow" href='mailto:trevor.gibby@gmail.com'>trevor.gibby@gmail.com</a>{' '}
+            <a target="_blank" rel="nofollow" href='mailto:trevor.gibby@gmail.com' onClick={() => track('Contact Click', { location: 'contact_form_email' })}>trevor.gibby@gmail.com</a>{' '}
             or by filling out the form below.
           </p>
           <Form onSubmit={handleSubmit} disabled={isSubmitting} className={isSubmitting ? styles.submitting_overlay : ''}>

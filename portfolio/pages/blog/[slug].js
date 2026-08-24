@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
+import { track } from '@vercel/analytics/react'
 
 import Main from '@/components/main_templates/main'
 import ContactModal, { showModal } from '@/components/content_widgets/contact-modal/contact-modal'
@@ -133,7 +134,7 @@ export default function BlogPost({ post, session }) {
               <div className={styles.postCta}>
                 <p>Have a thought to add?</p>
                 <h2>Let&apos;s continue the conversation.</h2>
-                <button type="button" className="btn btn-primary" onClick={showModal}>Get in touch ↗</button>
+                <button type="button" className="btn btn-primary" onClick={() => { track('Contact Click', { location: 'blog_post' }); showModal() }}>Get in touch ↗</button>
               </div>
             </div>
           </div>

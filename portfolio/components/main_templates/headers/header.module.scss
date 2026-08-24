@@ -89,7 +89,8 @@
     list-style: none;
   }
 
-  a {
+  a,
+  .navButton {
     position: relative;
     color: rgba(255, 255, 255, 0.62);
     font-family: var(--font-label);
@@ -97,6 +98,9 @@
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+
+    border: 0;
+    background: transparent;
 
     &::after {
       position: absolute;
@@ -186,7 +190,8 @@
       gap: 1.2rem;
     }
 
-    a {
+    a,
+    .navButton {
       color: #fff;
       font-family: var(--font-heading);
       font-size: clamp(2rem, 9vw, 3.2rem);
@@ -255,6 +260,16 @@
 
   .mobileOnly {
     display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .navInner,
+  .nav,
+  .nav a::after,
+  .menuButton span {
+    transition: none;
   }
 }
 

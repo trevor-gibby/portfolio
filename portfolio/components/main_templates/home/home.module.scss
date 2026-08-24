@@ -91,11 +91,11 @@
   z-index: 3;
 
   h1 {
-    max-width: 780px;
+    max-width: 860px;
     margin: 1.1rem 0 1.7rem;
     color: #fff;
     font-family: var(--font-heading);
-    font-size: clamp(3.6rem, 7vw, 7.2rem);
+    font-size: clamp(3.3rem, 5.3vw, 5.5rem);
     font-weight: 800;
     letter-spacing: -0.065em;
     line-height: 0.93;
@@ -245,6 +245,7 @@
   img {
     display: block;
     width: 66%;
+    height: auto;
     margin: 0.8rem auto;
     filter: drop-shadow(0 24px 24px rgba(0, 0, 0, 0.4));
   }
@@ -423,6 +424,7 @@
 
 .about,
 .work,
+.principlesSection,
 .expertise,
 .insights,
 .contact {
@@ -623,17 +625,31 @@
   }
 }
 
+.resumeLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.5rem;
+  align-items: center;
+}
+
 .work {
   background:
     radial-gradient(circle at 0% 30%, rgba(250, 117, 168, 0.09), transparent 26%),
     #0c0c13;
 }
 
+.principlesSection {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 20%, rgba(185, 137, 255, 0.08), transparent 28%),
+    var(--background);
+}
+
 .sectionHeading {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(250px, 0.5fr);
   gap: 2rem;
-  align-items: end;
+  align-items: flex-end;
   margin-bottom: clamp(3rem, 7vw, 6rem);
 
   .sectionLabel {
@@ -751,6 +767,14 @@
     line-height: 1.1;
     text-transform: none;
   }
+
+  > p {
+    max-width: 28rem;
+    margin-bottom: 1.4rem;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
 }
 
 .skillIndex {
@@ -781,9 +805,8 @@
   grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.2fr);
   gap: clamp(3rem, 8vw, 8rem);
   align-items: start;
-  padding-top: clamp(6rem, 11vw, 10rem);
-  margin-top: clamp(6rem, 11vw, 10rem);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0;
+  margin: 0;
 }
 
 .principlesIntro {
@@ -791,7 +814,7 @@
   top: 8rem;
 
   h2 {
-    margin: 1rem 0 0;
+    margin: 0;
     color: #fff;
     font-family: var(--font-heading);
     font-size: clamp(2.8rem, 5vw, 5rem);
@@ -799,6 +822,10 @@
     letter-spacing: -0.055em;
     line-height: 1;
     text-transform: none;
+  }
+
+  .sectionLabel {
+    margin-bottom: 1.8rem;
   }
 }
 
@@ -837,6 +864,53 @@
       color: var(--text-secondary);
       line-height: 1.7;
     }
+
+    small {
+      display: block;
+      max-width: 33rem;
+      margin-top: 0.8rem;
+      color: rgba(255, 255, 255, 0.48);
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+.impactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: clamp(4rem, 8vw, 7rem);
+
+  article {
+    min-height: 15rem;
+    padding: 1.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.025);
+
+    > span {
+      color: var(--primary);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+    }
+
+    h3 {
+      margin: 2rem 0 0.8rem;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
   }
 }
 
@@ -852,7 +926,8 @@
 
 .contact {
   padding-top: 3rem;
-  background: #0c0c13;
+  padding-bottom: clamp(6rem, 11vw, 10rem);
+  background: var(--background);
 }
 
 .contactCard {
@@ -1041,6 +1116,14 @@
     top: auto;
   }
 
+  .impactGrid {
+    grid-template-columns: 1fr 1fr;
+
+    article:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
   .blogGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1086,12 +1169,26 @@
   .blogGrid {
     grid-template-columns: 1fr;
   }
+
+  .impactGrid {
+    grid-template-columns: 1fr;
+
+    article:last-child {
+      grid-column: auto;
+    }
+  }
 }
 
 @media (max-width: 575px) {
   .hero {
     min-height: auto;
     padding-bottom: 4.5rem;
+  }
+
+  .heroCopy {
+    h1 {
+      font-size: clamp(2.9rem, 14vw, 4.2rem);
+    }
   }
 
   .availability {
