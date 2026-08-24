@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trevorgibby.dev/sitemap.xml
+Sitemap: https://www.trevorgibby.dev/sitemap.xml

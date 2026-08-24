@@ -401,6 +401,10 @@
   width: max-content;
   animation: marquee 34s linear infinite;
 
+  .marqueeSequence {
+    display: flex;
+  }
+
   span {
     display: flex;
     gap: 1.7rem;

@@ -6,6 +6,7 @@ import { track } from '@vercel/analytics/react'
 import Main from '@/components/main_templates/main'
 import ContactModal, { showModal } from '@/components/content_widgets/contact-modal/contact-modal'
 import blogPostsData from '@/variables/blog-posts.json'
+import { metadataBase } from '@/variables/seo'
 import styles from './[slug].module.scss'
 
 const blogPosts = blogPostsData.posts
@@ -35,7 +36,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function BlogPost({ post, session }) {
-  const siteUrl = 'https://trevorgibby.dev'
+  const siteUrl = metadataBase
   const postUrl = `${siteUrl}/blog/${post.slug}`
   const imageUrl = post.image ? `${siteUrl}${post.image}` : null
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {

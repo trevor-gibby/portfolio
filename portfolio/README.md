@@ -2,7 +2,7 @@
 
 Personal portfolio website showcasing my work as a senior full-stack engineer and hands-on technical lead.
 
-**Live Site:** [trevorgibby.dev](https://trevorgibby.dev)
+**Live Site:** [www.trevorgibby.dev](https://www.trevorgibby.dev)
 
 ## Tech Stack
 

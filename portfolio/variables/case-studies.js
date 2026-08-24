@@ -177,26 +177,26 @@ export const caseStudies = [
     },
     intro: 'I first explored this idea as a capstone project. I am now rebuilding it independently with a stronger data model and a modern TypeScript stack. It is not a production system or a company-sponsored product.',
     technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Auth.js', 'Jest'],
-    image: '/images/mywork/canopy/canopy-4.png',
+    image: '/images/mywork/operations-platform/operations-platform-hierarchy.png',
     imageAlt: 'Dark operations-platform interface showing a nested account hierarchy with filters and status labels',
     gallery: [
       {
-        image: '/images/mywork/canopy/canopy-4.png',
+        image: '/images/mywork/operations-platform/operations-platform-hierarchy.png',
         alt: 'Nested account hierarchy with primary and sub-account rows',
         caption: 'A single hierarchy for primary accounts and recursively nested sub-accounts.'
       },
       {
-        image: '/images/mywork/canopy/canopy-5.png',
+        image: '/images/mywork/operations-platform/operations-platform-accounts.png',
         alt: 'Primary account management screen with status and industry cards',
         caption: 'Account-level CRM workflows with status, search, and role-aware actions.'
       },
       {
-        image: '/images/mywork/canopy/canopy-3.png',
+        image: '/images/mywork/operations-platform/operations-platform-contact.png',
         alt: 'Contact detail screen with linked accounts, custom attributes, and activity timeline',
         caption: 'Contacts can connect to multiple account levels while keeping custom fields and activity in one place.'
       },
       {
-        image: '/images/mywork/canopy/canopy-2.png',
+        image: '/images/mywork/operations-platform/operations-platform-communication.png',
         alt: 'Gmail workspace embedded in a contact record',
         caption: 'A connected Gmail workspace keeps client communication inside the CRM context.'
       }
@@ -241,7 +241,7 @@ export const caseStudies = [
       'The current Prisma schema contains 37 models covering identity, access, integrations, CRM relationships, communications, reminders, and supporting join records.',
       'The repository includes 71 automated test files across actions, routes, UI components, permissions, CRM utilities, Gmail, and integration behavior; all 499 tests passed in the read-only audit.',
       'The repository lint check and production build both completed successfully in an isolated read-only audit workspace.',
-      'All portfolio screenshots use approved demo data. The source repository remains private.'
+      'All portfolio screenshots use entirely synthetic demo data. The source repository remains private.'
     ],
     reflection: {
       learned: 'The rebuild reinforced that the hard part is not choosing a newer stack. It is making the domain model clearer so the interface, permissions, integrations, and future services can grow from the same foundation.',

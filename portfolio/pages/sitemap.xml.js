@@ -1,7 +1,8 @@
 import blogPostsData from '@/variables/blog-posts.json'
 import { caseStudies } from '@/variables/case-studies'
+import { metadataBase } from '@/variables/seo'
 
-const siteUrl = 'https://trevorgibby.dev'
+const siteUrl = metadataBase
 
 function escapeXml(value) {
   return value

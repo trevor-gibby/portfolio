@@ -1,5 +1,6 @@
 import Main from '@/components/main_templates/main'
 import Home from '@/components/main_templates/home/home'
+import { metadataBase } from '@/variables/seo'
 
 export function getStaticProps() {
   return { props: {} }
@@ -10,7 +11,7 @@ export default function HomePage({ siteVariables, session }) {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Trevor Gibby',
-    url: 'https://trevorgibby.dev',
+    url: metadataBase,
     jobTitle: 'Senior Full-Stack Engineer and Technical Lead',
     sameAs: [
       'https://github.com/trevor-gibby',
@@ -22,7 +23,7 @@ export default function HomePage({ siteVariables, session }) {
     <Main
       meta_title="Trevor Gibby | Senior Full-Stack Engineer & Technical Lead"
       meta_description="Senior full-stack engineer and hands-on technical leader specializing in platform modernization, reusable product systems, integrations, AWS, and practical 0→1 development."
-      meta_url="https://trevorgibby.dev"
+      meta_url={metadataBase}
       schema={schema}
     >
       <Home siteVariables={siteVariables} session={session} />

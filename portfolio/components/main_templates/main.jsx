@@ -5,13 +5,14 @@ import Layout from '../global_templates/layout'
 
 import Header from './headers/header'
 import Footer from './footers/footer'
+import { defaultOpenGraphImage, metadataBase } from '@/variables/seo'
 
 export default function Main({
   children, 
   meta_title, 
   meta_description,
-  meta_image = 'https://trevorgibby.dev/og-senior.png',
-  meta_url = 'https://trevorgibby.dev',
+  meta_image = defaultOpenGraphImage,
+  meta_url = metadataBase,
   meta_type = 'website',
   article,
   schema

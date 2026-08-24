@@ -1,31 +1,31 @@
 [
   {
-    "title": "Canopy",
-    "eyebrow": "Product engineering · Ninthroot",
+    "title": "Operations Platform for Agencies",
+    "eyebrow": "Independent product prototype",
     "highlight": true,
-    "short_description": "A multi-tenant command center for franchise-scale client operations.",
-    "long_description": "Canopy gives teams a clear way to manage brands at both company and location level. I helped shape the system end to end: secure OAuth access, role-aware user management, audit history, high-speed search and filtering, and a robust integration API.",
-    "image": "/images/mywork/canopy/canopy-1.png",
-    "image_alt": "Canopy client management dashboard",
+    "short_description": "A 0→1 operations platform for account hierarchies, contacts, communication, and team access.",
+    "long_description": "This independent prototype models agency clients at both company and location level while keeping contacts, communication, team access, and activity history connected.",
+    "image": "/images/mywork/operations-platform/operations-platform-login.png",
+    "image_alt": "Synthetic Operations Platform sign-in interface",
     "link": "",
-    "link_label": "Private client platform",
+    "link_label": "Independent prototype",
     "accent": "#FA75A8",
-    "technologies": ["Next.js", "Prisma", "MySQL", "Redis", "OAuth"],
+    "technologies": ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Auth.js"],
     "gallery": [
       {
-        "image": "/images/mywork/canopy/canopy-2.png",
-        "image_alt": "Canopy brand management interface",
-        "caption": "Multi-brand management"
+        "image": "/images/mywork/operations-platform/operations-platform-communication.png",
+        "image_alt": "Synthetic communication workspace with fictional messages",
+        "caption": "Contextual communication"
       },
       {
-        "image": "/images/mywork/canopy/canopy-3.png",
-        "image_alt": "Canopy location dashboard",
-        "caption": "Location-level control"
+        "image": "/images/mywork/operations-platform/operations-platform-contact.png",
+        "image_alt": "Synthetic contact workspace with fictional account and activity data",
+        "caption": "Contact and activity context"
       },
       {
-        "image": "/images/mywork/canopy/canopy-4.png",
-        "image_alt": "Canopy user interface",
-        "caption": "Purpose-built workflows"
+        "image": "/images/mywork/operations-platform/operations-platform-hierarchy.png",
+        "image_alt": "Synthetic nested account hierarchy with fictional organizations",
+        "caption": "Nested account workflows"
       }
     ]
   },

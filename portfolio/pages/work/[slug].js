@@ -7,6 +7,7 @@ import Main from '@/components/main_templates/main'
 import ContactModal, { showModal } from '@/components/content_widgets/contact-modal/contact-modal'
 import { caseStudies, getCaseStudy } from '@/variables/case-studies'
 import siteVariables from '@/variables/site-variables.json'
+import { metadataBase } from '@/variables/seo'
 
 import styles from './[slug].module.scss'
 
@@ -74,7 +75,7 @@ function ArchitectureDiagram() {
 }
 
 export default function CaseStudy({ caseStudy, session }) {
-  const canonicalUrl = `https://trevorgibby.dev/work/${caseStudy.slug}`
+  const canonicalUrl = `${metadataBase}/work/${caseStudy.slug}`
 
   useEffect(() => {
     track('Case Study View', { slug: caseStudy.slug })
@@ -88,7 +89,7 @@ export default function CaseStudy({ caseStudy, session }) {
     author: {
       '@type': 'Person',
       name: 'Trevor Gibby',
-      url: 'https://trevorgibby.dev'
+      url: metadataBase
     },
     url: canonicalUrl
   }
@@ -140,8 +141,8 @@ export default function CaseStudy({ caseStudy, session }) {
         {caseStudy.gallery?.length > 0 && (
           <section className={styles.gallerySection} aria-labelledby="gallery-title">
             <div className="container">
-              <SectionHeading eyebrow="Approved product evidence" title="Working screens from the current prototype." id="gallery-title" />
-              <p className={styles.galleryNote}>The product name is intentionally omitted from this case study. Screens show approved demo data; the private repository and source are not published.</p>
+              <SectionHeading eyebrow="Synthetic product walkthrough" title="Working screens from the current prototype." id="gallery-title" />
+              <p className={styles.galleryNote}>The private product name is intentionally omitted. These recreated screens use entirely fictional people, organizations, addresses, and conversations; the private repository and source are not published.</p>
               <div className={styles.gallery}>
                 {caseStudy.gallery.map((item, index) => (
                   <figure key={item.image} className={index === 0 ? styles.galleryLead : ''}>

@@ -179,9 +179,16 @@ export default function Home({ siteVariables, session }) {
 
       <div className={styles.marquee} aria-label="Technology specialties">
         <div className={styles.marqueeTrack}>
-          {[...allSkills.slice(0, 14), ...allSkills.slice(0, 14)].map((skill, index) => (
-            <span key={`${skill}-${index}`}>{skill}<i aria-hidden="true" /></span>
-          ))}
+          <div className={styles.marqueeSequence}>
+            {allSkills.slice(0, 14).map((skill) => (
+              <span key={skill}>{skill}<i aria-hidden="true" /></span>
+            ))}
+          </div>
+          <div className={styles.marqueeSequence} aria-hidden="true">
+            {allSkills.slice(0, 14).map((skill) => (
+              <span key={skill}>{skill}<i aria-hidden="true" /></span>
+            ))}
+          </div>
         </div>
       </div>
 
