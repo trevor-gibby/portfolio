@@ -20,6 +20,15 @@
   },
   "posts": [
     {
+      "slug": "when-growth-outgrows-the-workaround",
+      "title": "When Growth Outgrows the Workaround",
+      "excerpt": "The tradeoffs between scalable architecture and an intentionally quick solution",
+      "date": "2026-08-30",
+      "author": "Trevor Gibby",
+      "tags": ["software architecture", "scalability", "technical leadership"],
+      "published": true
+    },
+    {
       "slug": "welcome-to-my-blog",
       "title": "Welcome to My Blog",
       "excerpt": "An introduction to my new blog where I'll be sharing thoughts on software engineering, technology, and my journey as a full stack engineer.",

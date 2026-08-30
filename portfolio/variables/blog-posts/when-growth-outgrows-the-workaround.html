@@ -1,0 +1,72 @@
+<h1>When Growth Outgrows the Workaround</h1>
+
+<h2>The tradeoffs between scalable architecture and an intentionally quick solution</h2>
+
+<p>It’s Monday morning. You’ve just logged in and you’re reviewing the backlog prepping for the week. Your product owner approaches you to describe a new feature that the stakeholders assure you is crucial to the product’s bottom line (spoiler alert, it’s just another dashboard). Regardless of the project’s complexity, you immediately start thinking about how the implementation will fit into your perfectly crafted codebase. What database schema updates are required? Is the UI supported by an existing component? Where will the server actions live since it falls directly between two existing business operations? As you start working out the pseudocode in your mind, two more details are shared with you: first, the involved stakeholder is a huge Matthew McConaughey fan and demands a voice-over option that will narrate the data to you with that sweet Texan accent. Second, the dashboard must render 50% faster than your crappy datatable component currently does. “Perfect,” you think to yourself, “this will finally give me an excuse to build the Redis layer that I’ve been dreaming of!” You start daydreaming about the pristine architecture and how, once you build an abstraction layer, it will seamlessly integrate with any component that needs it. As for the McConaughey detail, that’s a simple component update but sounds complex enough that it will give you the leverage you need to communicate the extended timeline needed for the caching layer. And then, as the spec sheet starts coming together, you get that fateful Slack message: “stakeholder needs this by eod tomorrow btw, thanks!”</p>
+
+<p>While this scenario is obviously meant to include a dash of humor, the stakes and reality are all too familiar to anyone who has worked in software for longer than thirty seconds. All too often we are asked to make tradeoffs in developer experience for the sake of shipping fast. “Moving fast and breaking things” is not a mantra that any Type-A personality engineer wants to live by, knowing that ultimately more efficiency can be achieved by creating robust, scalable solutions and that the technical debt does affect business decisions down the road.</p>
+
+<p>The opposing argument is that many times we over-engineer solutions for one-off requests. We’ve all spent an entire day writing a script to automate a task that would have taken two hours had we done it manually only to never <code>python useless-script.py</code> that script again. The question then becomes: How do we match the solution to the problem we’re facing when we want to appropriately consider technical debt, scalability, stakeholder criteria, and appropriate business decisions?</p>
+
+<h2>Matching the Solution to the Stage</h2>
+
+<p>While I typically fall into the camp of engineers who would much rather design the perfect solution (mainly for my own DX down the line), I’ve learned that not all problems are the same and therefore don’t all require the same level of investment. I’ve found that most business solutions can be categorized into four stages:</p>
+
+<ol>
+  <li>Rare &amp; Reversible</li>
+  <li>Recurring &amp; Predictable</li>
+  <li>Frequent &amp; Growing</li>
+  <li>High Impact</li>
+</ol>
+
+<h3>Rare &amp; Reversible</h3>
+
+<p><strong>Investment: Keep it simple and manual</strong><br>
+The rare and reversible stage covers not only the one-off requests or temporary manual checks, but also things that just need to be done right away. Implementing some well-documented manual checks in the codebase hurts my soul but it is often the quicker solution than including a full UI to toggle the feature flag. The reversible aspect of this stage must also be emphasized. If you invest a lot of manual time into a one-off feature you had better make it easy to turn off once it’s no longer needed or the stakeholder changes their mind. If you’re dying inside about not having the chance to showcase your impeccable system design, this reversibility plan is where you can dedicate those efforts.</p>
+
+<h3>Recurring &amp; Predictable</h3>
+
+<p><strong>Investment: Document, template, and standardize</strong><br>
+This stage is often where it is most tempting to invest deep automation and scalability into a platform but this is also where tradeoffs need to be made. We’re faced with a classic good, better, best dilemma and if we invest too much into predictable backlog items that may be tedious or low effort, then we may not be allocating our investment appropriately. Ultimately if your backlog is so clear that you can invest time into these items to reduce engineering expenses then do it, but not at the expense of the next stage.</p>
+
+<h3>Frequent &amp; Growing</h3>
+
+<p><strong>Investment: Automate, integrate, redesign</strong><br>
+The most useful way I can think of to distinguish between this stage and the previous is to think of it in terms of Big O notation. Will the engineering effort required by this feature or process grow exponentially or linearly? If we’re looking at an O(n^2) process, then it’s absolutely worth it to find a solution that can reduce its complexity to linear or constant time. Non-technical managers may not always recognize that, and sometimes it’s hard to recognize how much work something is early in that process when the slope is still small. Looking at the underlying engine that keeps a system running is key to recognizing when this stage of investment is best utilized.</p>
+
+<h3>High Impact</h3>
+
+<p><strong>Investment: Add controls, testing, or recovery</strong><br>
+This stage falls into a somewhat different category than the others. While the others look more at engineering hours, this asks the question: “What happens if this fails?” These high-impact cases should involve the appropriate amount of design, implementation, and review effort not only to build the feature but also to create the infrastructure around the feature. It requires the maximum level of investment, utilizing all development best practices.</p>
+
+<h2>Recognizing a Stage Change</h2>
+
+<p>Frequently a request that started as a promised one-off can slowly develop into the core infrastructure that your entire product rests on. Recognizing stage changes early is critical to building successful systems, and there are a variety of signals to look for. One rising signal does not necessarily demand the next stage of investment, but multiple signals strongly indicate that something needs to be done.</p>
+
+<h3>Repetition</h3>
+
+<p><strong>How often do we perform or repair it?</strong><br>
+Perhaps the most obvious signal is how often we are repeating the same process over and over again. There could just be one guy on your team that’s manually cleaning edge-case data in your database every night, or it could be that more frequent PRs have exposed your DevOps pipeline for the bottleneck that it is. Equally as important is recognizing features that are in constant need of repair. If your non-normalized database schema is creating constant invalid queries, then it might be time to plug that hole. Both will lead to a larger backlog and take away from spending time on the items that really move the business forward.</p>
+
+<h3>Operational Drag</h3>
+
+<p><strong>Do steps, handoffs, or rework grow?</strong><br>
+Moving from the frequency of a backlog task to the time needed to complete it, operational drag is a signal most managers notice easily. Without blaming the quality of a developer, these drags can range from dealing with undocumented code to poor DevOps tools. Most of us have one thing immediately come to mind when considering operational drag, and it’s usually blaming something other than ourselves. The more constructive approach is to recognize where the inefficiency lies and ask which investment stage should come next.</p>
+
+<h3>Risk</h3>
+
+<p><strong>What happens when it fails?</strong><br>
+Early in my career I developed an integration for a client that was used to pull a list of the classes they offered from their class management software and display it on their site. The process was simple enough: check our cache, if needed call the API to pull the data, format it, and cache it. It was a single section on their home page and wasn’t crucial for the consumer funnel but the client wanted it on the site. What I had missed was that I hadn’t removed my testing flag that bypassed the cache and the system was now getting hit with rate-limit errors from the API. I had also failed to build in proper error handling, and the home page of their site was now returning a 500 error just for this single layer. We caught the error early and I was instantly able to see my mistake, but it signaled a serious flaw in our process: that a single website layer implemented by a stupid developer could cause such a serious impact. What was a pretty standard process instantly got flagged as something that needed the highest stage of investment and we immediately built in proper guardrails. Other signals of risk may be less severe, so matching the acceptable risk to the appropriate next stage of investment is key.</p>
+
+<h3>Trajectory</h3>
+
+<p><strong>Will volume or complexity keep rising?</strong><br>
+While all of these signals are situation-dependent, recognizing the trajectory is probably the one with the most variety. Since most companies are seeking growth and scale, they’ll often answer that increased volume and complexity is always part of the equation, but depending on the system being evaluated, increased complexity may not be the goal. Most software design principles focus on proper scoping and abstraction to make the system as simple as possible, and that’s similarly the goal here. While this signal is not specifically reserved for the software design itself, that paints the clearest picture of what kind of trajectory might serve as a flag that the next stage of investment is needed.</p>
+
+<h2>Choosing the Next Level of Investment</h2>
+
+<p>Hopefully as I’ve discussed these four signals you’ve been able to think of specific systems that are in need of refinement. The next step is deciding what the appropriate level of investment is. The answer isn’t hidden in the signals themselves but in whatever the root system is designed to do. If you designed a Matthew McConaughey voice-over button as a one-time feature for one specific dashboard and it’s now become a requirement on every page of your application for accessibility requirements, you’re not just dealing with designing a reusable component to satisfy all of the “How to Lose a Guy in 10 Days” fans; this is now crucial infrastructure to protect you from lawsuits. You’ll need adequate testing, fallbacks, and system recovery to protect your system. Therefore the jump may not be from stage one to stage two, it could go directly to stage four. Recognizing the stage the problem is in, communicating the stage so it’s understood by both the implementation team and the stakeholders, and regularly evaluating your signals for change will lead to properly scaling software solutions.</p>
+
+<h2>A Note on AI</h2>
+
+<p>As AI software-development tools shrink the gap for implementation that absolutely needs to be calculated in the investment equation. An AI can easily replicate implementation throughout a system, automate workflows, and build solutions faster than most developers. It can also introduce other problems and bottlenecks that teams need to address. Debugging AI generated code can be a painstaking process in legacy codebases. Idempotency is a huge problem faced in AI automation flows. And writing long markdown instructions to provide context to your agent needs to be considered in your processes. None of these potential roadblocks are to say these tools shouldn’t be used, I use them every day, I just mean that as the work changes the solutions change. Modernizing legacy platforms, implementing features, system design are all evolving but the principles expressed in this article stay the same. Communicating to an agent that a feature will be a one-off solution can save tons of context tokens and properly communicating the impact of a feature can help ensure an agent builds in full test coverage and rollback solutions. The work is different; the principles remain.</p>
