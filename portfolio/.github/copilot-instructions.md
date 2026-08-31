@@ -1,5 +1,9 @@
 # Copilot Instructions for Portfolio Project
 
+## Source Control Safety
+
+- Do not commit or push changes without checking with the user and receiving explicit approval immediately before the commit or push.
+
 ## Architecture Overview
 
 This is a **Next.js 13 (Pages Router)** personal portfolio site using React 18 with SCSS Modules for styling. The architecture follows a component-based structure with data-driven content.

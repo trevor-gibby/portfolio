@@ -1,0 +1,23 @@
+{
+  "_schema": {
+    "_description": "Blog author profile data structure reference (this object is ignored by the app)",
+    "id": "string - Stable author identifier",
+    "name": "string - Display name; must match blog post author",
+    "role": "string - Short professional title",
+    "image": "string - Public path to the author's headshot",
+    "imageAlt": "string - Accessible headshot description",
+    "bio": "string - Brief About the Author copy",
+    "url": "string - Internal or external author profile link"
+  },
+  "authors": [
+    {
+      "id": "trevor-gibby",
+      "name": "Trevor Gibby",
+      "role": "Senior Full-Stack Engineer & Hands-On Technical Lead",
+      "image": "/headshots/headshot1-2.jpeg",
+      "imageAlt": "Trevor Gibby",
+      "bio": "I’m a senior full-stack engineer and hands-on technical lead working across product, platform, integrations, infrastructure, and delivery. I focus on practical architecture, useful systems, and helping small engineering teams deliver better work.",
+      "url": "/#about"
+    }
+  ]
+}

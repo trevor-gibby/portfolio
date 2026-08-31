@@ -35,3 +35,8 @@ yarn-error.log*
 next-env.d.ts
 
 *.md
+
+# Keep repository agent guidance and project-local skills versioned.
+!/AGENTS.md
+!/.agents/
+!/.agents/**

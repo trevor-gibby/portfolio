@@ -1,10 +1,12 @@
 import fs from 'fs'
 import path from 'path'
+import Image from 'next/image'
 import Link from 'next/link'
 import { track } from '@vercel/analytics/react'
 
 import Main from '@/components/main_templates/main'
 import ContactModal, { showModal } from '@/components/content_widgets/contact-modal/contact-modal'
+import authorsData from '@/variables/authors.json'
 import blogPostsData from '@/variables/blog-posts.json'
 import { metadataBase } from '@/variables/seo'
 import styles from './[slug].module.scss'
@@ -39,6 +41,12 @@ export default function BlogPost({ post, session }) {
   const siteUrl = metadataBase
   const postUrl = `${siteUrl}/blog/${post.slug}`
   const imageUrl = post.image ? `${siteUrl}${post.image}` : null
+  const authorName = post.author || 'Trevor Gibby'
+  const author = authorsData.authors.find((item) => item.name === authorName) || {
+    id: authorName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+    name: authorName
+  }
+  const authorUrl = author.url ? `${siteUrl}${author.url}` : siteUrl
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -56,8 +64,9 @@ export default function BlogPost({ post, session }) {
     dateModified: post.date,
     author: {
       '@type': 'Person',
-      name: post.author || 'Trevor Gibby',
-      url: siteUrl
+      name: authorName,
+      url: authorUrl,
+      ...(author.image ? { image: `${siteUrl}${author.image}` } : {})
     },
     publisher: {
       '@type': 'Person',
@@ -78,7 +87,7 @@ export default function BlogPost({ post, session }) {
       meta_image={imageUrl}
       meta_url={postUrl}
       meta_type="article"
-      article={{ publishedTime: post.date, author: post.author || 'Trevor Gibby', tags: post.tags }}
+      article={{ publishedTime: post.date, author: authorName, tags: post.tags }}
       schema={schema}
     >
       <header className={styles.hero}>
@@ -86,7 +95,7 @@ export default function BlogPost({ post, session }) {
           <Link href="/blog" className={styles.back}>← All writing</Link>
           <div className={styles.meta}>
             <span>{formattedDate}</span>
-            <span>{post.author || 'Trevor Gibby'}</span>
+            <span>{authorName}</span>
           </div>
           <h1>{post.title}</h1>
           <p>{post.excerpt}</p>
@@ -107,14 +116,33 @@ export default function BlogPost({ post, session }) {
       <section className={styles.articleSection}>
         <div className="container">
           <div className={styles.articleGrid}>
-            <aside>
-              <span>Published</span>
-              <strong>{formattedDate}</strong>
-              <span>Written by</span>
-              <strong>{post.author || 'Trevor Gibby'}</strong>
-            </aside>
-            <div>
+            <div className={styles.articleColumn}>
               <article className={styles.content} dangerouslySetInnerHTML={{ __html: post.content }} />
+
+              <section className={styles.authorCard} aria-labelledby={`about-${author.id}`}>
+                {author.image && (
+                  <div className={styles.authorPhoto}>
+                    <Image
+                      src={author.image}
+                      alt={author.imageAlt || author.name}
+                      width={152}
+                      height={152}
+                      sizes="152px"
+                    />
+                  </div>
+                )}
+                <div className={styles.authorCopy}>
+                  <p className={styles.authorLabel}>About the author</p>
+                  <h2 id={`about-${author.id}`}>{author.name}</h2>
+                  {author.role && <p className={styles.authorRole}>{author.role}</p>}
+                  {author.bio && <p className={styles.authorBio}>{author.bio}</p>}
+                  {author.url && (
+                    <Link href={author.url} className={styles.authorLink}>
+                      More about {author.name.split(' ')[0]} <span aria-hidden="true">→</span>
+                    </Link>
+                  )}
+                </div>
+              </section>
 
               {post.sources?.length > 0 && (
                 <div className={styles.sources}>
@@ -132,13 +160,20 @@ export default function BlogPost({ post, session }) {
                   </ol>
                 </div>
               )}
-
-              <div className={styles.postCta}>
-                <p>Have a thought to add?</p>
-                <h2>Let&apos;s continue the conversation.</h2>
-                <button type="button" className="btn btn-primary" onClick={() => { track('Contact Click', { location: 'blog_post' }); showModal() }}>Get in touch ↗</button>
-              </div>
             </div>
+
+            <aside className={styles.detailsCard} aria-label="Article details">
+              <span>Published</span>
+              <strong>{formattedDate}</strong>
+              <span>Written by</span>
+              <strong>{authorName}</strong>
+            </aside>
+          </div>
+
+          <div className={styles.postCta}>
+            <p>Have a thought to add?</p>
+            <h2>Let&apos;s continue the conversation.</h2>
+            <button type="button" className="btn btn-primary" onClick={() => { track('Contact Click', { location: 'blog_post' }); showModal() }}>Get in touch ↗</button>
           </div>
         </div>
       </section>

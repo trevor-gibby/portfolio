@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Blog Post"
+  short_description: "Publish an attached post without changing it"
+  default_prompt: "Use $add-blog-post to publish my attached article to this portfolio blog."
