@@ -20,6 +20,15 @@
   },
   "posts": [
     {
+      "slug": "teaching-ai-to-work-in-a-codebase-older-than-its-context-window",
+      "title": "Teaching AI to Work in a Codebase Older Than Its Context Window",
+      "excerpt": "What I've learned about context, instructions, and guardrails while using AI-assisted development in a large legacy system.",
+      "date": "2026-08-31",
+      "author": "Trevor Gibby",
+      "tags": ["ai", "software architecture", "legacy systems"],
+      "published": false
+    },
+    {
       "slug": "when-growth-outgrows-the-workaround",
       "title": "When Growth Outgrows the Workaround",
       "excerpt": "The tradeoffs between scalable architecture and an intentionally quick solution",

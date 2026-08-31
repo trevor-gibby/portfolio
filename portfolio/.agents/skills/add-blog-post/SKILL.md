@@ -13,10 +13,10 @@ Publish the supplied article as a new entry in this repository's existing blog. 
 - Read `variables/blog-posts.json` before editing so the new record follows the current schema and conventions.
 - Determine metadata in this order: explicit user instructions, document frontmatter, then the defaults below.
   - `title`: use the first level-one heading verbatim.
-  - `excerpt`: use the first complete prose paragraph verbatim. Never summarize or truncate it.
+  - `excerpt`: use the first level-two heading. If none is supplied before the first paragraph then use the first complete prose paragraph verbatim. Never summarize or truncate it.
   - `date`: use the current date in `YYYY-MM-DD` format.
   - `author`: default to `Trevor Gibby`.
-  - `tags`: default to an empty array rather than inventing categories.
+  - `tags`: parse the content and apply relevant categories or keywords as an array of strings.
   - `published`: default to `true` when the user asks to add or publish the post.
 - Derive a lowercase, hyphenated slug from the title unless the user supplies one. Never overwrite an existing post or asset without asking first.
 - Frontmatter is metadata, not article body. Do not render a valid frontmatter block as article content.
